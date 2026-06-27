@@ -1,19 +1,26 @@
-% !TEX program = pdflatex
+% !TEX program = xelatex
 \documentclass[10.5pt,a4paper]{article}
 \usepackage[margin=0.6in,top=0.55in,bottom=0.5in]{geometry}
+\usepackage{fontspec}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{titlesec}
-\usepackage[T1]{fontenc}
+
+% ─── Smartisan (3 weights, separate families) ───
+\setmainfont{SmartisanCompactCNS-Regular}
+\newfontfamily\boldfont{SmartisanCompactCNS-Bold}
+\newfontfamily\heavyfont{SmartisanCompactCNS-Heavy}
+% Redefine \textbf to use Smartisan Bold
+\DeclareTextFontCommand{\textbf}{\boldfont}
 
 \setlength{\parindent}{0pt}
 \setlist{nosep,leftmargin=*,itemsep=1pt,topsep=1pt}
 
 \titleformat{\section}
-  {\normalfont\bfseries\normalsize}
+  {\heavyfont\normalsize}
   {}{0em}
   {}
-  [\vspace{-6pt}\rule{\textwidth}{0.4pt}\vspace{4pt}]
+  [\vspace{-5pt}\rule{\textwidth}{0.4pt}\vspace{3pt}]
 \titlespacing{\section}{0pt}{10pt}{4pt}
 
 \hypersetup{colorlinks=true,urlcolor=black!55,linkcolor=black,pdfborder={0 0 0}}
@@ -23,7 +30,7 @@
 
 % ═══════════ HEADER ═══════════
 \begin{center}
-  {\fontsize{22}{24}\selectfont\textbf{Kun Zhang}}\\[2pt]
+  {\heavyfont\fontsize{22}{24}\selectfont Kun Zhang}\\[2pt]
   {\small\itshape Research interests: corporate finance, labor economics, institutional ownership, causal inference}\\[4pt]
   {\small
     kzhang.1@alumni.unav.es \quad$\cdot$\quad
