@@ -1,113 +1,106 @@
 % !TEX program = xelatex
 \documentclass[10pt, letterpaper]{article}
 
-\usepackage[margin=0.75in,top=0.7in,bottom=0.6in]{geometry}
+\usepackage[margin=0.7in,top=0.6in,bottom=0.5in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{fontspec}
 
-% ─── Smartisan (2 weights: Regular + Bold) ───
+% ─── Smartisan (Regular + Bold only) ───
 \setmainfont{SmartisanCompactCNS-Regular}
 \newfontfamily\boldfont{SmartisanCompactCNS-Bold}
 \DeclareTextFontCommand{\textbf}{\boldfont}
 
-\hypersetup{
-    colorlinks=true,
-    linkcolor=black,
-    filecolor=black,
-    urlcolor=black,
-}
+\hypersetup{colorlinks=true,linkcolor=black,filecolor=black,urlcolor=black}
 
-% Section: uppercase, bold, Heavy, with rule
+% ─── Section formatting ───
 \titleformat{\section}{\boldfont\large\uppercase}{}{0pt}{}[\titlerule]
-\titlespacing{\section}{0pt}{14pt}{7pt}
+\titlespacing{\section}{0pt}{10pt}{5pt}
 
-\newcommand{\resumeItem}[1]{\item\small{#1\vspace{-1pt}}}
+% ─── Clean list ───
+\setlist{nosep,leftmargin=0.2in,label=\textendash}
+
+% ─── Left-right helper ───
+\newcommand{\headerline}[2]{\textbf{#1}\hfill{\small #2}}
 
 \begin{document}
 
-% ─── HEADER ───
+% ═══════════ HEADER ═══════════
 \begin{center}
-    {\boldfont\LARGE Kun Zhang}\\[2pt]
-    {\itshape Pre-doctoral Researcher}\\[4pt]
-    \small kzhang.1@alumni.unav.es ~|~ (+34) 677 842 746 ~|~ Pamplona, Spain \\
-    \href{https://kunkunz420.github.io}{kunkunz420.github.io} ~|~ \href{https://linkedin.com/in/kun-zhang-a52627351}{LinkedIn} ~|~ \href{https://github.com/kunkunz420}{GitHub}
+  {\boldfont\LARGE Kun Zhang}\\[1pt]
+  {\itshape Pre-doctoral Researcher}\\[3pt]
+  \small
+  kzhang.1@alumni.unav.es \;$\cdot$\; (+34) 677 842 746 \;$\cdot$\; Pamplona, Spain\\[2pt]
+  \href{https://kunkunz420.github.io}{kunkunz420.github.io}
+  \;$\cdot$\;
+  \href{https://linkedin.com/in/kun-zhang-a52627351}{LinkedIn}
+  \;$\cdot$\;
+  \href{https://github.com/kunkunz420}{GitHub}
 \end{center}
 
-% ─── SUMMARY ───
+% ═══════════ SUMMARY ═══════════
 \section*{Summary}
-\small{Research interests: corporate finance, labor economics, institutional ownership, causal inference. Seeking Pre-doctoral Research Assistant positions (2026--2027), with the long-term goal of a Ph.D.\ in Financial Economics.}
+\small
+Research interests: corporate finance, labor economics, institutional ownership, causal inference.
+Seeking Pre-doctoral Research Assistant positions (2026--2027), with the long-term goal of a
+Ph.D.\ in Financial Economics.
 
-% ─── WORKING PAPER ───
+% ═══════════ WORKING PAPER ═══════════
 \section*{Working Paper}
-\noindent
-\begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-  \textbf{Institutional Common Ownership and Executive Mobility} & \\
-  \textit{Supervisor: Prof.\ Jos\'e Azar (IESE \& UNAV)} & \\
-\end{tabular*}\vspace{-5pt}
-\begin{itemize}[leftmargin=0.15in, label={--}]
-    \resumeItem{Exploiting the BlackRock--BGI merger (2009) as a quasi-natural experiment, I examine how institutional common ownership shapes C-suite executive mobility.}
-    \resumeItem{Using difference-in-differences and event study designs on a 27.8-million-row firm-pair panel linking 13F holdings (58.9M obs.), ExecuComp data (31,959 executive-years), and Orbis director moves (24,716 transitions), I find that common ownership increases mobility through within-network labor market channels---rejecting the shadow non-compete hypothesis.}
-    \resumeItem{\textbf{Results:} Firm-level DiD: +0.073 ($p = 0.002$). Pair-level logit: $\Delta\lambda = +0.582$ ($p < 10^{-18}$). Event study: Post-2009 significant ($p < 0.001$). Robust to 17 pair-level checks, 5 placebo tests.}
-    \resumeItem{\textbf{Link:} \href{https://github.com/kunkunz420/common-ownership-executive-mobility}{github.com/kunkunz420/common-ownership-executive-mobility}}
+
+\noindent\textbf{Institutional Common Ownership and Executive Mobility}\\[1pt]
+{\small\itshape Supervisor: Prof.\ Jos\'e Azar (IESE \& UNAV)}\\[3pt]
+\begin{itemize}
+  \item{\small Exploiting the BlackRock--BGI merger (2009) as a quasi-natural experiment, I examine how institutional common ownership shapes C-suite executive mobility.}
+  \item{\small Using difference-in-differences and event study designs on a 27.8-million-row firm-pair panel linking 13F holdings (58.9M obs.), ExecuComp data (31,959 executive-years), and Orbis director moves (24,716 transitions), I find that common ownership increases mobility through within-network labor market channels---rejecting the shadow non-compete hypothesis.}
+  \item{\small \textbf{Results:} Firm-level DiD: +0.073 ($p = 0.002$). Pair-level logit: $\Delta\lambda = +0.582$ ($p < 10^{-18}$). Event study: Post-2009 significant ($p < 0.001$). Robust to 17 pair-level checks, 5 placebo tests.}
+  \item{\small \textbf{Link:} \href{https://github.com/kunkunz420/common-ownership-executive-mobility}{github.com/kunkunz420/common-ownership-executive-mobility}}
 \end{itemize}
 
-% ─── CONFERENCES ───
+% ═══════════ CONFERENCES ═══════════
 \section*{Conferences \& Presentations}
-\noindent
-\begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-  \textbf{IESE MWOW 2026 -- Madrid Work \& Organizations Workshop} & May 21--22, 2026 \\
-  \textit{Paper presented. Keynotes: Erin L.\ Kelly (MIT Sloan), Lauren A.\ Rivera (Kellogg).} & Madrid, Spain \\
-\end{tabular*}\vspace{4pt}
 
-\noindent
-\textbf{IESE AI Conference 2026} $\cdot$ \textbf{Roads to Development 2026}
+\headerline{IESE MWOW 2026}{May 21--22, 2026}\\[1pt]
+{\small\itshape Madrid Work \& Organizations Workshop. Paper presented.}\\[1pt]
+{\small Keynotes: Erin L.\ Kelly (MIT Sloan), Lauren A.\ Rivera (Kellogg).}\\[4pt]
 
-% ─── EDUCATION ───
+\noindent\textbf{IESE AI Conference 2026} \;$\cdot$\;
+\textbf{Roads to Development 2026}
+
+% ═══════════ EDUCATION ═══════════
 \section*{Education}
-\noindent
-\begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-  \textbf{Universidad de Navarra} & Sep.\ 2025 -- Present \\
-  \textit{Master in Economics and Finance (MEF)} & Pamplona, Spain \\
-\end{tabular*}\vspace{-5pt}
-\begin{itemize}[leftmargin=0.15in, label={--}]
-    \resumeItem{\textbf{Relevant:} Econometrics, Mathematical Economics, Real Analysis, Statistics.}
-\end{itemize}
 
-\noindent
-\begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-  \textbf{Hanyang University} & Sep.\ 2023 -- Jan.\ 2024 \\
-  \textit{Exchange, College of Economics and Finance} & Seoul, Korea \\
-\end{tabular*}\vspace{4pt}
+\headerline{Universidad de Navarra}{Sep.\ 2025 -- Present}\\[1pt]
+{\small\itshape Master in Economics and Finance (MEF), Pamplona, Spain}\\[1pt]
+{\small Relevant: Econometrics, Mathematical Economics, Real Analysis, Statistics.}\\[6pt]
 
-\noindent
-\begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-  \textbf{Yantai Institute of Technology} & Sep.\ 2021 -- Jul.\ 2024 \\
-  \textit{B.A.\ in Economics (International Economics \& Trade)} & Shandong, China \\
-\end{tabular*}
+\headerline{Hanyang University}{Sep.\ 2023 -- Jan.\ 2024}\\[1pt]
+{\small\itshape Exchange, College of Economics and Finance, Seoul, Korea}\\[6pt]
 
-% ─── EXPERIENCE ───
+\headerline{Yantai Institute of Technology}{Sep.\ 2021 -- Jul.\ 2024}\\[1pt]
+{\small\itshape B.A.\ in Economics (International Economics \& Trade), Shandong, China}
+
+% ═══════════ EXPERIENCE ═══════════
 \section*{Experience}
-\noindent
-\begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-  \textbf{China Economic Data Analysis} & Oct.\ 2025 -- Present \\
-  \textit{Lead Developer} & \\
-\end{tabular*}\vspace{4pt}
 
-\noindent
-\begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-  \textbf{Shandong Dongsheng Construction} & Mar.\ 2024 -- Jun.\ 2024 \\
-  \textit{Accounting Intern} & \\
-\end{tabular*}
+\headerline{China Economic Data Analysis --- Lead Developer}{Oct.\ 2025 -- Present}\\[4pt]
 
-% ─── HONORS ───
+\headerline{Shandong Dongsheng Construction --- Accounting Intern}{Mar.\ 2024 -- Jun.\ 2024}
+
+% ═══════════ HONORS ═══════════
 \section*{Honors}
-\small{Outstanding Exchange Student Award (Hanyang, 2024) ~|~ Outstanding Student (Yantai, 2024) ~|~ University Python Programming Champion (Yantai, 2023)}
+\small
+Outstanding Exchange Student Award (Hanyang, 2024)
+\;$\cdot$\;
+Outstanding Student (Yantai, 2024)
+\;$\cdot$\;
+University Python Programming Champion (Yantai, 2023)
 
-% ─── SKILLS ───
+% ═══════════ SKILLS ═══════════
 \section*{Skills \& Languages}
-\small{\textbf{Technical:} Python (pandas, statsmodels, NumPy), Stata, SQL, \LaTeX, Git, JavaScript} \\[2pt]
-\small{\textbf{Languages:} English (C1), Chinese (Native), Spanish (A2)}
+\small
+\textbf{Technical:} Python (pandas, statsmodels, NumPy), Stata, SQL, \LaTeX, Git, JavaScript\\[4pt]
+\textbf{Languages:} English (C1), Chinese (Native), Spanish (A2)
 
 \end{document}
