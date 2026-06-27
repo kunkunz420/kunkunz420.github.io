@@ -1,46 +1,46 @@
 % !TEX program = xelatex
-\documentclass[10pt, letterpaper]{article}
+\documentclass[9.5pt, letterpaper]{article}
 
-\usepackage[margin=0.7in,top=0.6in,bottom=0.5in]{geometry}
+\usepackage[margin=0.75in,top=0.5in,bottom=0.4in]{geometry}
 \usepackage{titlesec}
-
 \usepackage{hyperref}
 \usepackage{fontspec}
 
-% ─── Smartisan (Regular + Bold only) ───
 \setmainfont{SmartisanCompactCNS-Regular}
 \newfontfamily\boldfont{SmartisanCompactCNS-Bold}
 \DeclareTextFontCommand{\textbf}{\boldfont}
 
-\hypersetup{colorlinks=true,linkcolor=black,filecolor=black,urlcolor=black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,pdfborder={0 0 0}}
 
-% ─── Section formatting ───
-\titleformat{\section}{\boldfont\large\uppercase}{}{0pt}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{5pt}
+% Section: small caps, Bold, with thin rule
+\titleformat{\section}{\boldfont\scshape\fontsize{11}{13}\selectfont}{}{0pt}{}[\vspace{-1pt}\rule{\textwidth}{0.3pt}]
+\titlespacing{\section}{0pt}{7pt}{3pt}
 
-% ─── Clean list ───
-
-
-% ─── Left-right helper ───
-\newcommand{\headerline}[2]{\textbf{#1}\hfill{\small #2}}
+% Small helper for left-right lines
+\newcommand{\entry}[2]{\textbf{#1}\hfill{\small #2}}
 
 \begin{document}
+\thispagestyle{empty}
 
 % ═══════════ HEADER ═══════════
 \begin{center}
-  {\boldfont\LARGE Kun Zhang}\\[1pt]
-  {\itshape Pre-doctoral Researcher}\\[3pt]
-  \small
-  kzhang.1@alumni.unav.es \;$\cdot$\; (+34) 677 842 746 \;$\cdot$\; Pamplona, Spain\\[2pt]
-  \href{https://kunkunz420.github.io}{kunkunz420.github.io}
-  \;$\cdot$\;
-  \href{https://linkedin.com/in/kun-zhang-a52627351}{LinkedIn}
-  \;$\cdot$\;
-  \href{https://github.com/kunkunz420}{GitHub}
+  {\boldfont\LARGE Kun Zhang}\\[3pt]
+  {\small Pre-doctoral Researcher}\\[6pt]
+  {\small
+    kzhang.1@alumni.unav.es \;$\cdot$\; (+34) 677 842 746 \;$\cdot$\; Pamplona, Spain\\[3pt]
+    \href{https://kunkunz420.github.io}{kunkunz420.github.io}
+    \;$\cdot$\;
+    \href{https://linkedin.com/in/kun-zhang-a52627351}{LinkedIn}
+    \;$\cdot$\;
+    \href{https://github.com/kunkunz420}{GitHub}
+  }
 \end{center}
 
 % ═══════════ SUMMARY ═══════════
 \section*{Summary}
+
 \small
 Research interests: corporate finance, labor economics, institutional ownership, causal inference.
 Seeking Pre-doctoral Research Assistant positions (2026--2027), with the long-term goal of a
@@ -49,54 +49,55 @@ Ph.D.\ in Financial Economics.
 % ═══════════ WORKING PAPER ═══════════
 \section*{Working Paper}
 
-\noindent\textbf{Institutional Common Ownership and Executive Mobility}\\[1pt]
-{\small\itshape Supervisor: Prof.\ Jos\'e Azar (IESE \& UNAV)}\\[3pt]
-{\small
-Exploiting the BlackRock--BGI merger (2009) as a quasi-natural experiment, I examine
-how institutional common ownership shapes C-suite executive mobility.\\[2pt]
-Using difference-in-differences and event study designs on a 27.8-million-row
-firm-pair panel linking 13F holdings (58.9M obs.), ExecuComp data (31,959
-executive-years), and Orbis director moves (24,716 transitions), I find that
-common ownership increases mobility through within-network labor market
-channels---rejecting the shadow non-compete hypothesis.\\[2pt]
+\noindent\textbf{Institutional Common Ownership and Executive Mobility}\\[3pt]
+{\small Supervisor: Prof.\ Jos\'e Azar (IESE \& UNAV)}\\[4pt]
+
+\small
+Exploiting the BlackRock--BGI merger (2009) as a quasi-natural experiment, I examine how
+institutional common ownership shapes C-suite executive mobility. Using difference-in-differences
+and event study designs on a 27.8-million-row firm-pair panel linking 13F holdings (58.9M obs.),
+ExecuComp data (31,959 executive-years), and Orbis director moves (24,716 transitions), I find
+that common ownership increases mobility through within-network labor market channels---rejecting
+the shadow non-compete hypothesis.
+
 \textbf{Results:} Firm-level DiD: +0.073 ($p = 0.002$). Pair-level logit:
 $\Delta\lambda = +0.582$ ($p < 10^{-18}$). Event study: Post-2009 significant
-($p < 0.001$). Robust to 17 pair-level checks, 5 placebo tests.\\[2pt]
+($p < 0.001$). Robust to 17 pair-level checks, 5 placebo tests.
+
 \textbf{Link:} \href{https://github.com/kunkunz420/common-ownership-executive-mobility}{github.com/kunkunz420/common-ownership-executive-mobility}
-}
 
 % ═══════════ CONFERENCES ═══════════
 \section*{Conferences \& Presentations}
 
-\headerline{IESE MWOW 2026}{May 21--22, 2026}\\[1pt]
-{\small\itshape Madrid Work \& Organizations Workshop. Paper presented.}\\[1pt]
+\entry{IESE MWOW 2026}{May 21--22, 2026}\\[2pt]
+{\small Madrid Work \& Organizations Workshop. Paper presented.}\\[1pt]
 {\small Keynotes: Erin L.\ Kelly (MIT Sloan), Lauren A.\ Rivera (Kellogg).}\\[4pt]
 
-\noindent\textbf{IESE AI Conference 2026} \;$\cdot$\;
-\textbf{Roads to Development 2026}
+\noindent\textbf{IESE AI Conference 2026} \;$\cdot$\; \textbf{Roads to Development 2026}
 
 % ═══════════ EDUCATION ═══════════
 \section*{Education}
 
-\headerline{Universidad de Navarra}{Sep.\ 2025 -- Present}\\[1pt]
-{\small\itshape Master in Economics and Finance (MEF), Pamplona, Spain}\\[1pt]
-{\small Relevant: Econometrics, Mathematical Economics, Real Analysis, Statistics.}\\[6pt]
+\entry{Universidad de Navarra}{Sep.\ 2025 -- Present}\\[2pt]
+{\small Master in Economics and Finance (MEF), Pamplona, Spain}\\[1pt]
+{\small Relevant: Econometrics, Mathematical Economics, Real Analysis, Statistics.}\\[5pt]
 
-\headerline{Hanyang University}{Sep.\ 2023 -- Jan.\ 2024}\\[1pt]
-{\small\itshape Exchange, College of Economics and Finance, Seoul, Korea}\\[6pt]
+\entry{Hanyang University}{Sep.\ 2023 -- Jan.\ 2024}\\[2pt]
+{\small Exchange, College of Economics and Finance, Seoul, Korea}\\[5pt]
 
-\headerline{Yantai Institute of Technology}{Sep.\ 2021 -- Jul.\ 2024}\\[1pt]
-{\small\itshape B.A.\ in Economics (International Economics \& Trade), Shandong, China}
+\entry{Yantai Institute of Technology}{Sep.\ 2021 -- Jul.\ 2024}\\[2pt]
+{\small B.A.\ in Economics (International Economics \& Trade), Shandong, China}
 
 % ═══════════ EXPERIENCE ═══════════
 \section*{Experience}
 
-\headerline{China Economic Data Analysis --- Lead Developer}{Oct.\ 2025 -- Present}\\[4pt]
+\entry{China Economic Data Analysis --- Lead Developer}{Oct.\ 2025 -- Present}\\[3pt]
 
-\headerline{Shandong Dongsheng Construction --- Accounting Intern}{Mar.\ 2024 -- Jun.\ 2024}
+\entry{Shandong Dongsheng Construction --- Accounting Intern}{Mar.\ 2024 -- Jun.\ 2024}
 
 % ═══════════ HONORS ═══════════
 \section*{Honors}
+
 \small
 Outstanding Exchange Student Award (Hanyang, 2024)
 \;$\cdot$\;
@@ -106,6 +107,7 @@ University Python Programming Champion (Yantai, 2023)
 
 % ═══════════ SKILLS ═══════════
 \section*{Skills \& Languages}
+
 \small
 \textbf{Technical:} Python (pandas, statsmodels, NumPy), Stata, SQL, \LaTeX, Git, JavaScript\\[4pt]
 \textbf{Languages:} English (C1), Chinese (Native), Spanish (A2)
