@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RA 申请策略 — Kun Zhang</title>
+<style>
+@font-face{font-family:'Smartisan';src:local('SmartisanCompactCNS-Regular'),url('SmartisanCompact-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'Smartisan Light';src:local('SmartisanCompactCNS-Light'),url('SmartisanCompact-Light.ttf') format('truetype');font-weight:300;font-style:normal;font-display:block}
+@font-face{font-family:'Smartisan Bold';src:local('SmartisanCompactCNS-Bold'),url('SmartisanCompact-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:block}
+@font-face{font-family:'Smartisan Heavy';src:local('SmartisanCompactCNS-Heavy'),url('SmartisanCompact-Heavy.ttf') format('truetype');font-weight:900;font-style:normal;font-display:block}
+
+:root{
+  --bg:#0a0e17;--surface:#111827;--surface2:#1a2332;--surface3:#1f2a3a;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --accent:#c9a84c;--accent2:#e2c87a;--accent-dim:#8b7332;
+  --t1:#34d399;--t2:#60a5fa;--t3:#a78bfa;--t4:#f472b6;
+  --r:12px;--mw:1100px
+}
+.light{
+  --bg:#f8f7f3;--surface:#fff;--surface2:#f3f1ec;--surface3:#ece9e2;
+  --text:#1a1a1a;--text2:#555;--text3:#888;
+  --accent:#8b6914;--accent2:#a67c00;--accent-dim:#c9a84c;
+  --t1:#0d9488;--t2:#2563eb;--t3:#7c3aed;--t4:#db2777
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Smartisan Light','Smartisan','Smartisan Bold','Smartisan Heavy',sans-serif;background:var(--bg);color:var(--text);line-height:1.8;font-weight:300;font-synthesis:none;-webkit-font-smoothing:antialiased;transition:background 0.4s,color 0.4s}
+::selection{background:var(--accent-dim);color:#fff}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,14,23,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06);padding:0 2rem}
+.light nav{background:rgba(248,247,243,0.88);border-bottom:1px solid rgba(0,0,0,0.08)}
+nav .inner{max-width:var(--mw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px}
+nav .logo{font-family:'Smartisan Heavy';font-weight:900;font-size:1.1rem;letter-spacing:0.04em;color:var(--accent)}
+nav .links{display:flex;gap:1.8rem;list-style:none}
+nav .links a{font-family:'Smartisan';font-weight:400;color:var(--text2);text-decoration:none;font-size:0.85rem;letter-spacing:0.02em}
+nav .links a:hover{color:var(--accent2)}
+nav .tgl{font-family:'Smartisan';background:var(--surface2);border:1px solid rgba(128,128,128,0.2);color:var(--text2);font-size:0.76rem;padding:6px 14px;border-radius:20px;cursor:pointer;letter-spacing:0.03em}
+
+section{max-width:var(--mw);margin:0 auto;padding:5rem 2rem}
+section.hero{padding-top:8rem;min-height:90vh;display:flex;flex-direction:column;justify-content:center}
+.hero .pretitle{font-family:'Smartisan Light';font-weight:300;font-size:0.9rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
+.hero h1{font-family:'Smartisan Heavy';font-weight:900;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.12;letter-spacing:-0.01em;margin-bottom:1.5rem}
+.hero h1 span{color:var(--accent)}
+.hero .subtitle{font-family:'Smartisan Light';font-weight:300;font-size:1.15rem;color:var(--text2);max-width:680px;margin-bottom:2.5rem;line-height:1.7}
+.hero .meta{display:flex;gap:2rem;flex-wrap:wrap}
+.hero .meta-item{font-family:'Smartisan Light';font-weight:300;font-size:0.8rem;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase}
+.hero .meta-item strong{display:block;font-family:'Smartisan Bold';font-weight:700;color:var(--text);font-size:0.95rem;margin-bottom:2px;text-transform:none;letter-spacing:0}
+
+.sec-label{font-family:'Smartisan Light';font-weight:300;font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem}
+.sec-title{font-family:'Smartisan Heavy';font-weight:900;font-size:2rem;margin-bottom:0.6rem;letter-spacing:-0.01em}
+.sec-desc{font-family:'Smartisan Light';font-weight:300;color:var(--text2);font-size:1rem;max-width:680px;margin-bottom:3rem;line-height:1.7}
+
+.tier-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:4rem}
+.tier-card{background:var(--surface);border:1px solid rgba(128,128,128,0.1);border-radius:var(--r);padding:1.8rem 1.5rem;text-decoration:none;color:inherit;display:block;position:relative;overflow:hidden}
+.tier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.tier-card.t1::before{background:var(--t1)}.tier-card.t2::before{background:var(--t2)}
+.tier-card.t3::before{background:var(--t3)}.tier-card.t4::before{background:var(--t4)}
+.tier-card .tnum{font-family:'Smartisan Heavy';font-weight:900;font-size:2.4rem;line-height:1;margin-bottom:0.4rem}
+.tier-card.t1 .tnum{color:var(--t1)}.tier-card.t2 .tnum{color:var(--t2)}
+.tier-card.t3 .tnum{color:var(--t3)}.tier-card.t4 .tnum{color:var(--t4)}
+.tier-card .tlabel{font-family:'Smartisan Bold';font-weight:700;font-size:0.95rem;margin-bottom:0.3rem}
+.tier-card .tsub{font-family:'Smartisan Light';font-weight:300;font-size:0.78rem;color:var(--text3);line-height:1.5}
+
+.detail-block{background:var(--surface);border:1px solid rgba(128,128,128,0.1);border-radius:var(--r);padding:2.5rem 2rem;margin-bottom:1.5rem}
+.detail-block .dhead{display:flex;align-items:flex-start;gap:1.2rem;margin-bottom:2rem}
+.detail-block .dicon{width:48px;height:48px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;font-family:'Smartisan Heavy';font-weight:900;font-size:1.3rem;flex-shrink:0}
+.detail-block .dtitle{font-family:'Smartisan Heavy';font-weight:900;font-size:1.4rem;line-height:1.3}
+.detail-block .dsub{font-family:'Smartisan Light';font-weight:300;font-size:0.85rem;color:var(--text2);margin-top:3px}
+.detail-block .dbody{font-family:'Smartisan Light';font-weight:300;font-size:0.9rem;color:var(--text2);line-height:1.8}
+.detail-block .dbody strong{font-family:'Smartisan Bold';font-weight:700;color:var(--text)}
+
+.prof-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.5rem 0}
+.prof-card{background:var(--surface2);border-radius:var(--r);padding:1.5rem;border:1px solid rgba(128,128,128,0.08)}
+.prof-card .pname{font-family:'Smartisan Bold';font-weight:700;font-size:1.05rem;margin-bottom:2px}
+.prof-card .prole{font-family:'Smartisan Light';font-weight:300;font-size:0.78rem;color:var(--accent);margin-bottom:0.8rem}
+.prof-card .pinfo{font-family:'Smartisan Light';font-weight:300;font-size:0.82rem;color:var(--text2);line-height:1.7}
+.prof-card .pinfo span{color:var(--text3);font-family:'Smartisan Bold';font-weight:700}
+.prof-card .plink{display:inline-block;margin-top:0.7rem;font-family:'Smartisan';font-size:0.78rem;color:var(--accent);text-decoration:none}
+.prof-card .plink:hover{color:var(--accent2)}
+
+.email-box{font-family:'Smartisan Light';font-weight:300;background:var(--surface3);border-left:3px solid var(--accent);padding:1.5rem 1.8rem;border-radius:0 var(--r) var(--r) 0;margin:1.5rem 0;font-size:0.85rem;color:var(--text2);line-height:1.8;white-space:pre-line;font-style:italic}
+.email-box .elabel{font-family:'Smartisan Bold';font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);font-style:normal;margin-bottom:0.8rem;display:block}
+
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--surface2))}
+.timeline-item{position:relative;padding-bottom:2.5rem}
+.timeline-item::before{content:'';position:absolute;left:-2.35rem;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.timeline-item .tphase{font-family:'Smartisan Light';font-weight:300;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.timeline-item .ttitle{font-family:'Smartisan Bold';font-weight:700;font-size:1rem;margin-bottom:6px}
+.timeline-item .tdesc{font-family:'Smartisan Light';font-weight:300;font-size:0.85rem;color:var(--text2);line-height:1.7}
+
+.pbar{height:8px;border-radius:4px;background:var(--surface2);margin:0.6rem 0 0.2rem;overflow:hidden}
+.pbar .fill{height:100%;border-radius:4px;transition:width 0.8s ease-out}
+.pbar .fill.t1{background:var(--t1)}.pbar .fill.t2{background:var(--t2)}
+.pbar .fill.t3{background:var(--t3)}.pbar .fill.t4{background:var(--t4)}
+
+.checklist{list-style:none}
+.checklist li{font-family:'Smartisan Light';font-weight:300;padding:0.8rem 0;border-bottom:1px solid rgba(128,128,128,0.08);font-size:0.88rem;color:var(--text2);display:flex;align-items:flex-start;gap:0.8rem}
+.checklist li .check{font-family:'Smartisan Bold';font-weight:700;color:var(--t1);flex-shrink:0}
+.checklist li:last-child{border-bottom:none}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin:2rem 0}
+.stat-item{text-align:center;padding:1.5rem;background:var(--surface2);border-radius:var(--r)}
+.stat-item .snum{font-family:'Smartisan Heavy';font-weight:900;font-size:2rem;color:var(--accent)}
+.stat-item .slabel{font-family:'Smartisan Light';font-weight:300;font-size:0.75rem;color:var(--text3);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;line-height:1.5}
+
+footer{font-family:'Smartisan Light';font-weight:300;text-align:center;padding:3rem 2rem;color:var(--text3);font-size:0.75rem;letter-spacing:0.06em;border-top:1px solid rgba(128,128,128,0.08)}
+
+@media(max-width:768px){
+  nav .links{display:none}
+  .hero h1{font-size:2rem}
+  .tier-grid{grid-template-columns:1fr 1fr}
+  .prof-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:1fr}
+  section{padding:3rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <div class="logo">KZ · RA 策略</div>
+    <div style="display:flex;align-items:center;gap:0.8rem">
+      <ul class="links">
+        <li><a href="#overview">概览</a></li>
+        <li><a href="#t1">梯队 1</a></li>
+        <li><a href="#t2">梯队 2</a></li>
+        <li><a href="#t3">梯队 3</a></li>
+        <li><a href="#t4">梯队 4</a></li>
+        <li><a href="#timeline">时间线</a></li>
+      </ul>
+      <button class="tgl" onclick="toggleTheme()" id="themeBtn">日间</button>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="pretitle">研究助理申请策略 · 最新验证版</div>
+  <h1>四条通往<span>RA</span>的道路</h1>
+  <div class="subtitle">
+    基于网上验证 + 概率估算的系统策略。从 IESE MWOW 2026 会议 Keynote 联系
+    到 MEF 学术传承，从导师网络到课程渊源——四条并行路径，目标 2026–2027 年美国 pre-doc 职位。
+    保守估计：今年至少获得 1 个认真对话或 offer 的概率为 <strong style="color:var(--accent);font-family:'Smartisan Bold'">60–75%</strong>。
+  </div>
+  <div class="meta">
+    <div class="meta-item"><strong>Kun Zhang</strong>经济学与金融硕士</div>
+    <div class="meta-item"><strong>纳瓦拉大学</strong>潘普洛纳，西班牙</div>
+    <div class="meta-item"><strong>2026年7月 —</strong>目标开始时间</div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="sec-label">策略概览 · 已验证</div>
+  <div class="sec-title">四级 RA 管道（附保守概率）</div>
+  <div class="sec-desc">
+    按概率 × 时间线 × 关系强度排序。概率基于 2026-06-27 网上验证；各梯队并行推进，最先转化者胜出。
+  </div>
+
+  <div class="tier-grid">
+    <a href="#t1" class="tier-card t1">
+      <div class="tnum">01</div>
+      <div class="tlabel">Erin Kelly + Lauren Rivera</div>
+      <div class="tsub">MIT Sloan + 西北 Kellogg<br>MWOW 2026 Keynote 相识<br>概率：Erin 30-45% / Lauren 15-25%</div>
+    </a>
+    <a href="#t2" class="tier-card t2">
+      <div class="tnum">02</div>
+      <div class="tlabel">Eva Ascarza + Luis Gil-Alana</div>
+      <div class="tsub">哈佛商学院 + 纳瓦拉大学<br>HBS 正式 Predoc 程序 + 学术传承<br>概率：40-60%</div>
+    </a>
+    <a href="#t3" class="tier-card t3">
+      <div class="tnum">03</div>
+      <div class="tlabel">José Azar</div>
+      <div class="tsub">IESE + 纳瓦拉大学<br>论文导师 · 最强推荐信<br>概率：80%+（推荐信+引荐）</div>
+    </a>
+    <a href="#t4" class="tier-card t4">
+      <div class="tnum">04</div>
+      <div class="tlabel">Florencio López-de-Silanes</div>
+      <div class="tsub">LLSV · SKEMA（法国）<br>MEF 授课教授<br>概率：10-20%（无 US 招聘记录）</div>
+    </a>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-item"><div class="snum">4</div><div class="slabel">独立路径</div></div>
+    <div class="stat-item"><div class="snum">60-75%</div><div class="slabel">期望成功率</div></div>
+    <div class="stat-item"><div class="snum">12 周</div><div class="slabel">执行窗口</div></div>
+  </div>
+</section>
+
+<!-- TIER 1 -->
+<section id="t1">
+  <div class="sec-label" style="color:var(--t1)">第一梯队 · 最高优先</div>
+  <div class="sec-title">Erin Kelly + Lauren Rivera</div>
+  <div class="sec-desc">
+    <strong>已验证：</strong>IESE MWOW 2026 于 5月21-22日在马德里举行，两人均为 Keynote Speaker。
+    你已在会议现场与她们交谈。这是最直接的热连接。
+  </div>
+
+  <div class="prof-grid">
+    <div class="prof-card">
+      <div class="pname">Erin L. Kelly</div>
+      <div class="prole">Sloan 杰出教授 · MIT Sloan · 概率 30-45%</div>
+      <div class="pinfo">
+        <span>研究领域：</span>工作再设计、排班灵活性、整群 RCT、员工福祉<br>
+        <span>博士：</span>普林斯顿大学社会学 (2000)<br>
+        <span>近期项目：</span>NIOSH ~$615k Fulfillment Center Intervention Study (2021-2025, 进行中) —— warehouse RCT，与你的面板+因果技能直接匹配<br>
+        <span>著作：</span><i>Overload</i>（普林斯顿，2020）— 马克斯·韦伯奖<br>
+        <span>其他：</span>IWER 联合主任；~$7.5M NIH + RWJF 总经费<br>
+        <span>邮箱：</span>elkelly@mit.edu<br>
+        <span>引用：</span>8,900+ | h指数: 27
+      </div>
+      <a href="https://mitsloan.mit.edu/faculty/directory/erin-kelly" class="plink" target="_blank">MIT Sloan 主页 →</a>
+    </div>
+    <div class="prof-card">
+      <div class="pname">Lauren A. Rivera</div>
+      <div class="prole">Peter G. Peterson 教授 · Kellogg · 概率 15-25%</div>
+      <div class="pinfo">
+        <span>研究领域：</span>招聘、不平等、精英、社会阶层、性别、残障<br>
+        <span>博士：</span>哈佛大学社会学 (2009)<br>
+        <span>著作：</span><i>Pedigree</i>（普林斯顿，2015）— 马克斯·韦伯奖<br>
+        <span>近期：</span><i>Nature</i> (2025)：评分量表与种族偏见<br>
+        <span>注意：</span>无公开 RA 招聘记录；偏定性/混合方法<br>
+        <span>邮箱：</span>l-rivera@kellogg.northwestern.edu<br>
+        <span>引用：</span>7,000+ | h指数: 17
+      </div>
+      <a href="https://www.kellogg.northwestern.edu/faculty/directory/rivera_lauren.aspx" class="plink" target="_blank">Kellogg 主页 →</a>
+    </div>
+  </div>
+
+  <div class="detail-block">
+    <div class="dhead">
+      <div class="dicon" style="background:rgba(52,211,153,0.12);color:var(--t1)">1</div>
+      <div>
+        <div class="dtitle">连接策略——优先 Erin Kelly</div>
+        <div class="dsub">概率更高 + 方法匹配更强 + 有明确在研项目</div>
+      </div>
+    </div>
+    <div class="dbody">
+      <strong>为什么 Erin 是最佳匹配：</strong><br>
+      NIOSH Fulfillment Center Intervention Study 是正在进行中的仓库整群 RCT——这正是你的面板数据
+      和因果推断技能的理想应用场景。Erin 的 RCT 方法论与你的 DiD/Event Study 框架互补但不重叠，
+      你可以提供她团队可能缺少的大规模数据处理能力。<br><br>
+
+      <strong>执行步骤：</strong><br>
+      第一步 — 会议后 1 周内发送跟进邮件（模板见下方），引述 MWOW 交谈内容。<br>
+      第二步 — 阅读她 2-3 篇近期论文（特别是 warehouse/Fulfillment Center RCT 相关）。<br>
+      第三步 — 附上工作论文 PDF + CV。明确表示你的 27M 行面板经验 + DiD 技能可直接赋能她的研究。<br>
+      第四步 — 如果 10 天内无回复，发送简短跟进邮件，附加一句你对她最新论文的具体见解。
+    </div>
+  </div>
+
+  <div class="email-box">
+<span class="elabel">邮件模板 — Erin Kelly（MWOW 跟进）</span>
+Subject: Following up — MWOW 2026 & RA interest
+
+Dear Professor Kelly,
+
+It was a pleasure hearing your keynote at IESE MWOW last month. Our brief
+conversation about [具体话题] left me thinking about the methodological
+parallels between your Fulfillment Center RCT and the panel data methods I
+have been developing in my own work.
+
+I am completing my Master in Economics and Finance at the University of
+Navarra, where my thesis (supervised by José Azar) uses DiD and event study
+designs on 27-million-row panel data to study institutional ownership and
+executive mobility.
+
+Your Fulfillment Center Intervention Study — applying cluster-randomized
+designs to real workplace settings — is exactly the kind of rigorous,
+policy-relevant empirical work I want to contribute to. I believe my
+experience with large-scale panel construction and high-dimensional fixed
+effects could add capacity to your research group.
+
+I have attached my CV and working paper. Would you be open to a brief
+conversation about RA opportunities in your group for 2026–2027?
+
+Warm regards,
+Kun Zhang
+MEF Candidate, University of Navarra
+GitHub: [link]
+  </div>
+</section>
+
+<!-- TIER 2 -->
+<section id="t2">
+  <div class="sec-label" style="color:var(--t2)">第二梯队 · 学术传承 · 40-60%</div>
+  <div class="sec-title">Eva Ascarza（HBS）+ Luis Gil-Alana（UNAV）</div>
+  <div class="sec-desc">
+    <strong>已验证：</strong>Eva Ascarza（MEF'04，Luis 的学生）现为 HBS 正教授，HBS 有正式
+    Predoctoral RA 程序（2026 Summer 启动，多岗位，1-2 年期，偏好 2 年）。她的 Customer
+    Intelligence Lab 处理大规模客户数据 + 田野实验 + ML/因果推断 + 算法偏见——与你的技能高度匹配。
+  </div>
+
+  <div class="prof-grid">
+    <div class="prof-card">
+      <div class="pname">Eva Ascarza</div>
+      <div class="prole">工商管理教授（市场营销）· 哈佛商学院 · 概率 40-60%</div>
+      <div class="pinfo">
+        <span>博士：</span>伦敦商学院，市场营销 (2009)<br>
+        <span>MEF：</span>纳瓦拉大学，2004（论文：长记忆 + 采样频率）<br>
+        <span>研究领域：</span>客户分析、AI 营销、算法偏见、田野实验<br>
+        <span>实验室：</span>联合创始人，Customer Intelligence Lab @ D³，哈佛<br>
+        <span>RA 机会：</span><strong>HBS 正式 Predoctoral RA 程序</strong>（2026 Summer，多岗位，偏好 2 年）<br>
+        <span>HBS RA 申请：</span>Rolling，截止 2026.6<br>
+        <span>邮箱：</span>eascarza@hbs.edu
+      </div>
+      <a href="https://www.hbs.edu/faculty/Pages/profile.aspx?facId=548988" class="plink" target="_blank">HBS 主页 →</a>
+    </div>
+    <div class="prof-card">
+      <div class="pname">Luis Alberiko Gil-Alana</div>
+      <div class="prole">计量经济学正教授 · 纳瓦拉大学</div>
+      <div class="pinfo">
+        <span>博士：</span>LSE (1997，导师：Peter M. Robinson)<br>
+        <span>专长：</span>分数阶积分、长记忆、时间序列<br>
+        <span>发表：</span>693+ 篇论文<br>
+        <span>授课：</span>Econometrics I（MEF）——你现在的教授<br>
+        <span>关键：</span>他认识 Eva 本人，是她 MEF 硕士论文的实质导师<br>
+        <span>邮箱：</span>alana@unav.es
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-block">
+    <div class="dhead">
+      <div class="dicon" style="background:rgba(96,165,250,0.12);color:var(--t2)">2</div>
+      <div>
+        <div class="dtitle">三步策略 + HBS 正式申请双线并行</div>
+        <div class="dsub">考试满分 → Luis 引荐 → Eva 直邮；同时投 HBS Predoc 程序</div>
+      </div>
+    </div>
+    <div class="dbody">
+      <strong>阶段 A — 考满分 + 建立 Luis 连接（6月29日）：</strong><br>
+      在 Luis 的 Econometrics I 中考满分——尤其在长记忆/谱密度部分（Eva 的论文主题）。
+      考后留下说：「我正在申请 US pre-doc RA。您是否愿意介绍我给 Eva Ascarza？
+      她的 Customer Intelligence Lab 的工作与我论文中用的面板数据方法高度契合。」<br><br>
+
+      <strong>阶段 B — Luis 引荐（7月初）：</strong><br>
+      Luis 给 Eva 发邮件。他的邮件自然成立：「Eva，我现在的 MEF 学生 Kun Zhang
+      正在找 US RA 职位。他的论文用 DiD/Event Study 研究共同所有权和高管流动。
+      他让我想起你 MEF 时的长记忆论文——同样追求严谨实证。你愿意聊聊吗？」<br><br>
+
+      <strong>阶段 C — 双线推进：</strong><br>
+      收到 Luis 引荐后 48 小时内给 Eva 发邮件（模板见下方）。
+      <strong>同时投 HBS 正式 Predoctoral RA 申请</strong>（Rolling，截止 2026.6）——
+      即使 Eva 个人没有空缺，HBS 系统也可能匹配你到其他教授。
+    </div>
+  </div>
+
+  <div class="email-box">
+<span class="elabel">邮件模板 — Eva Ascarza（Luis 引荐后）</span>
+Subject: MEF connection via Prof. Gil-Alana — RA interest (HBS Predoc 2026)
+
+Dear Professor Ascarza,
+
+Professor Luis Gil-Alana suggested I reach out, as I am a current MEF student
+at Navarra — the same program where you wrote your thesis on long memory and
+sampling frequency under his supervision in 2004.
+
+My thesis (supervised by José Azar) examines how institutional common ownership
+affects executive mobility, using DiD and event study designs on large-scale
+panel data (27M+ rows). Fittingly, Luis's Econometrics I course — particularly
+the spectral analysis and long-memory modules — gave me an appreciation for the
+methods that shaped your own MEF research.
+
+I am now seeking pre-doctoral RA positions in the US for 2026–2027 and have
+applied to the HBS Predoctoral RA program. Your work at the Customer
+Intelligence Lab — combining large-scale customer data with field experiments,
+causal inference, and algorithmic fairness — is exactly the kind of empirical
+research I want to pursue. I believe my panel data and DiD/event study skills
+would contribute meaningfully to your lab's projects.
+
+I would be grateful for a brief conversation about potential opportunities.
+CV and working paper attached.
+
+Warm regards,
+Kun Zhang
+  </div>
+</section>
+
+<!-- TIER 3 -->
+<section id="t3">
+  <div class="sec-label" style="color:var(--t3)">第三梯队 · 导师网络 · 80%+</div>
+  <div class="sec-title">José Azar</div>
+  <div class="sec-desc">
+    论文导师，IESE 商学院教授，共同所有权/劳动力/反垄断专家。这不只是「引荐」——这是你
+    整个 RA 申请的基石。<strong>José 的推荐信是所有路径中权重最高的单一要素</strong>，
+    因为他看过你的代码、回归和写作，这是其他推荐人无法提供的深度。
+  </div>
+
+  <div class="detail-block">
+    <div class="dhead">
+      <div class="dicon" style="background:rgba(167,139,250,0.12);color:var(--t3)">3</div>
+      <div>
+        <div class="dtitle">José 是不可替代的基石</div>
+        <div class="dsub">推荐信权重 > 任何冷邮件或会议引荐</div>
+      </div>
+    </div>
+    <div class="dbody">
+      <strong>José 能提供（其他路径无法替代）：</strong><br>
+      (1) 基于实际指导的强推荐信——看过你的代码和回归的教授写的东西，
+      与课堂教授写的完全不同。(2) 直接引荐给共同所有权/劳动力/反垄断圈子的学者。
+      (3) 他组织了 IESE MWOW 2026——他知道每个参会者的 RA 需求。<br><br>
+
+      <strong>他的合作者（可引荐目标）：</strong><br>
+      Martin C. Schmalz（牛津）——合著「Anticompetitive Effects of Common Ownership」(JFE, 2018)。
+      Isabel Tecu（Charles River Associates）。MWOW 2026 全体参会者。<br><br>
+
+      <strong>激活时机：</strong>考试后 1–2 周（7月中）。届时你有干净的 CV + 打磨好的工作论文。
+      在会面中明确说出：「我正在申请 US pre-doc RA。您愿意写推荐信并引荐我给正在招人的同事吗？」
+    </div>
+  </div>
+
+  <div class="email-box">
+<span class="elabel">邮件模板 — José Azar（会面请求）</span>
+Subject: Quick meeting — RA applications & reference request
+
+Dear José,
+
+I hope you are well. Following our MWOW conference and the completion of
+my thesis draft, I am now preparing to apply for pre-doctoral RA positions
+in the US for 2026–2027.
+
+Given your deep knowledge of my work — from the 27M-row panel construction
+to the DiD/event study designs and robustness checks — I was hoping you
+might be willing to write a reference letter. It would carry far more weight
+than any classroom recommendation.
+
+I would also be grateful for any introductions to colleagues in your network
+who might be hiring RAs. Given that you organized MWOW 2026, I imagine you
+know which attendees have openings.
+
+Would you have 15 minutes to discuss this in the coming week?
+
+Warm regards,
+Kun
+  </div>
+</section>
+
+<!-- TIER 4 -->
+<section id="t4">
+  <div class="sec-label" style="color:var(--t4)">第四梯队 · 课程联系 · 10-20%</div>
+  <div class="sec-title">Florencio López-de-Silanes（LLSV）</div>
+  <div class="sec-desc">
+    LLSV 中的「S」——169,713 引用，全球引用最多的经济学家之一。目前任 SKEMA 商学院（法国）金融学教授
+    + 纳瓦拉大学受邀教授。教过你的 Economic Theory III（代理冲突与公司治理）。
+    <strong>概率较低</strong>，因为他不在美国机构且无 US RA 公开记录——但他的网络广度无可匹敌，一次引荐可能打开任何其他梯队无法打开的门。
+  </div>
+
+  <div class="prof-grid">
+    <div class="prof-card">
+      <div class="pname">Florencio López-de-Silanes Molina</div>
+      <div class="prole">金融学教授 · SKEMA（法国）；NBER；CEPR</div>
+      <div class="pinfo">
+        <span>博士：</span>哈佛大学经济学 (1993)<br>
+        <span>LLSV 论文：</span>「Law and Finance」(JPE, 1998) — 20,000+ 引用<br>
+        <span>总计：</span>169,713 引用 | h指数: 70 | i10: 192<br>
+        <span>荣誉：</span>法国荣誉军团骑士勋章 (2009)<br>
+        <span>纳瓦拉大学：</span>受邀教授，Economic Theory III（你的课）<br>
+        <span>邮箱：</span>florencio.lopezdesilanes@skema.edu
+      </div>
+    </div>
+    <div class="prof-card">
+      <div class="pname">策略：低概率，高潜在回报</div>
+      <div class="prole">利用「前学生」身份 + 论文与 LLSV 主题的契合</div>
+      <div class="pinfo">
+        <span>切入点：</span>你的论文（共同所有权、公司治理、劳动力市场渠道）与 LLSV
+        核心主题（投资者保护、公司治理、法律制度）一脉相承。<br><br>
+        <span>具体提问：</span>「您是否知道 NBER Corporate Finance 组中有同事可能
+        正在寻找有面板数据和因果推断技能的 pre-doc RA？」
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="sec-label">执行计划</div>
+  <div class="sec-title">12 周行动时间线</div>
+  <div class="sec-desc">
+    从今天到第一个 RA offer。行动按热引荐优先排序；各路径并行推进。概率标注于每个阶段括号中。
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tphase">第 1–2 周（6月29日 – 7月13日）</div>
+      <div class="ttitle">基础建设：考试 + MWOW 跟进（Erin 30-45%, Lauren 15-25%）</div>
+      <div class="tdesc">
+        6月29日：计量经济学 I 考满分。考后向 Luis 建立 Eva 连接。第 1 周：向 Erin Kelly
+        和 Lauren Rivera 发送 MWOW 跟进邮件（优先 Erin）。读完她们的代表作。第 2 周：
+        跟进 Luis 关于 Eva 引荐。打磨 CV 到 1-2 页并最终确定工作论文 PDF。
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tphase">第 3–4 周（7月14日–27日）</div>
+      <div class="ttitle">第二梯队激活：Luis → Eva 渠道 + HBS 申请（Eva 40-60%）</div>
+      <div class="tdesc">
+        Luis 给 Eva 发引荐邮件。48 小时内：给 Eva 发邮件附 CV + 论文。同时投 HBS 正式
+        Predoctoral RA 申请（多岗位，Rolling）。跟进 Erin 和 Lauren 如超过 10 天未回复。
+        与 José 安排会面讨论推荐信。
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tphase">第 5–6 周（7月28日 – 8月10日）</div>
+      <div class="ttitle">第三梯队推进 + 第四梯队激活（José 80%+, Florencio 10-20%）</div>
+      <div class="tdesc">
+        与 José 会面：展示打磨好的论文，请求推荐信 + 具体引荐（Schmalz、Tecu 等）。
+        给 Florencio 发邮件引用 Economic Theory III 课程。跟进所有未回复邮件。
+        任何教授表达兴趣 → 3 天内安排 Zoom。
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tphase">第 7–8 周（8月11日–24日）</div>
+      <div class="ttitle">密集跟进 + 扩大申请</div>
+      <div class="tdesc">
+        跟进未回复邮件并附增值备注。扩大搜索：正式 pre-doc 项目（Harvard PREDOC、
+        MIT Sloan、Stanford SIEPR、Chicago BFI、NBER）。HBS 和 MIT Sloan 此时有大量
+        posting。同时保持所有个人连接的热度。
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tphase">第 9–12 周（8月25日 – 9月20日）</div>
+      <div class="ttitle">决策 + 收尾</div>
+      <div class="tdesc">
+        此时应有 1–2 次对话或积极信号。如有 offer：评估导师、研究契合度、地点。
+        如无：回到 Tier 1 直接请求 15 分钟通话。考虑欧洲备选 pre-doc 项目。
+        定期更新让四个梯队保持热度。目标：9 月底前锁定第一个 offer。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section>
+  <div class="sec-label">行动清单</div>
+  <div class="sec-title">从今天开始要做的事</div>
+
+  <div class="detail-block">
+    <div class="dhead">
+      <div class="dicon" style="background:rgba(201,168,76,0.12);color:var(--accent)">●</div>
+      <div>
+        <div class="dtitle">立即（本周）</div>
+        <div class="dsub">零依赖行动</div>
+      </div>
+    </div>
+    <ul class="checklist">
+      <li><span class="check">[ ]</span> 6月29日：计量经济学 I 考满分。考后向 Luis 提及 pre-doc 兴趣 + Eva 引荐请求。</li>
+      <li><span class="check">[ ]</span> 打磨 CV 至 1–2 页。突出：27M 行面板、DiD/Event Study、FWL FE 吸收、Python/Stata/LaTeX。</li>
+      <li><span class="check">[ ]</span> 最终确定工作论文 PDF + GitHub 仓库链接。</li>
+      <li><span class="check">[ ]</span> 阅读 Erin Kelly 的 Fulfillment Center RCT 相关论文 + Lauren Rivera 的 <i>Pedigree</i> 简介。</li>
+      <li><span class="check">[ ]</span> 发送 Erin Kelly 和 Lauren Rivera 的 MWOW 跟进邮件（优先 Erin）。</li>
+      <li><span class="check">[ ]</span> 准备一句话研究身份声明：「我用大规模面板数据和因果推断研究制度投资者如何影响企业劳动力市场。」</li>
+    </ul>
+  </div>
+
+  <div class="detail-block">
+    <div class="dhead">
+      <div class="dicon" style="background:rgba(201,168,76,0.12);color:var(--accent)">~</div>
+      <div>
+        <div class="dtitle">短期（7月）</div>
+        <div class="dsub">激活第一至三梯队</div>
+      </div>
+    </div>
+    <ul class="checklist">
+      <li><span class="check">[ ]</span> Luis 同意后：48 小时内给 Eva 发邮件附 CV + 论文 + HBS Predoc 申请引用。</li>
+      <li><span class="check">[ ]</span> 提交 HBS 正式 Predoctoral RA 申请（Rolling，2026.6 截止）。</li>
+      <li><span class="check">[ ]</span> 与 José 会面：请求推荐信 + 引荐（Schmalz、Tecu、MWOW 参会者）。</li>
+      <li><span class="check">[ ]</span> 跟进 Erin + Lauren 邮件（如 10 天未回复）。</li>
+      <li><span class="check">[ ]</span> 给 Florencio 发邮件（第四梯队，引用 Economic Theory III）。</li>
+    </ul>
+  </div>
+
+  <div class="detail-block">
+    <div class="dhead">
+      <div class="dicon" style="background:rgba(201,168,76,0.12);color:var(--accent)">→</div>
+      <div>
+        <div class="dtitle">中期（8月–9月）</div>
+        <div class="dsub">收尾闭环</div>
+      </div>
+    </div>
+    <ul class="checklist">
+      <li><span class="check">[ ]</span> 与感兴趣的教授安排 Zoom。</li>
+      <li><span class="check">[ ]</span> 申请正式 pre-doc 项目：Harvard PREDOC、MIT Sloan、Stanford SIEPR、Chicago BFI、NBER。</li>
+      <li><span class="check">[ ]</span> 确保至少 1 封强推荐信（José 首选，Luis 备选）。</li>
+      <li><span class="check">[ ]</span> 接受 offer 或继续外联至 9 月底。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHY THIS WORKS -->
+<section>
+  <div class="sec-label">关键洞察</div>
+  <div class="sec-title">为什么这套策略有效</div>
+
+  <div class="stat-row" style="margin-bottom:4rem">
+    <div class="stat-item">
+      <div class="snum" style="font-size:1.3rem;line-height:1.4">论文<br>是第一<br>凭证</div>
+      <div class="slabel">完整工作论文 = 你已证明可以独立做研究。这在 pre-doc 申请者中极为稀有。José 的推荐信基于真实指导，不是课堂表现。</div>
+    </div>
+    <div class="stat-item">
+      <div class="snum" style="font-size:1.3rem;line-height:1.4">四线<br>并行<br>不串行</div>
+      <div class="slabel">不等 Tier 1 失败才试 Tier 2。Erin/Eva/José/Florencio 四线同时运行。任一转化即可胜出。</div>
+    </div>
+    <div class="stat-item">
+      <div class="snum" style="font-size:1.3rem;line-height:1.4">市场<br>窗口<br>恰恰好</div>
+      <div class="slabel">2026 Summer HBS + MIT Sloan 大量 posting。MWOW 刚结束（热连接期）。论文刚完成（新鲜凭证）。时机完美。</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="margin-bottom:0.5rem;color:var(--accent);font-family:'Smartisan Bold';font-weight:700;font-size:0.8rem">Kun Zhang · MEF 2026 · 纳瓦拉大学</div>
+  <div>策略制定于 2026年6月27日 · 概率基于网上验证 · 随机会发展更新</div>
+  <div style="margin-top:0.5rem">字体：Smartisan Compact（锤子字体，lxgw 修改版）四种字重</div>
+</footer>
+
+<script>
+(function(){
+  if(localStorage.getItem('ra-theme')==='light'){
+    document.body.classList.add('light');
+    document.getElementById('themeBtn').textContent='夜间';
+  }
+})();
+function toggleTheme(){
+  var b=document.body,btn=document.getElementById('themeBtn');
+  b.classList.toggle('light');
+  var l=b.classList.contains('light');
+  btn.textContent=l?'夜间':'日间';
+  localStorage.setItem('ra-theme',l?'light':'dark');
+}
+</script>
+
+</body>
+</html>
