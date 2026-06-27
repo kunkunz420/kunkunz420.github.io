@@ -1,122 +1,104 @@
 % !TEX program = pdflatex
 \documentclass[11pt,a4paper]{article}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.7in]{geometry}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage[T1]{fontenc}
 
-% ─── Colors ───
-\usepackage{xcolor}
-\definecolor{accent}{RGB}{140,60,20}
-\definecolor{mid}{RGB}{80,80,80}
-\definecolor{light}{RGB}{160,160,160}
-
 % ─── Spacing ───
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
 \setlist{nosep,leftmargin=*,itemsep=1pt,topsep=1pt}
 
-% ─── Section titles ───
+% ─── Section headings ───
 \titleformat{\section}
-  {\normalfont\bfseries\scshape\color{accent}}
+  {\normalfont\bfseries\Large}
   {}{0em}
   {}
-  [\vspace{-6pt}{\color{accent!25}\rule{\textwidth}{0.4pt}}\vspace{2pt}]
-\titlespacing{\section}{0pt}{14pt}{6pt}
+  [\vspace{-6pt}\rule{\textwidth}{0.4pt}\vspace{4pt}]
+\titlespacing{\section}{0pt}{16pt}{8pt}
 
 % ─── Links ───
-\hypersetup{colorlinks=true,urlcolor=black!55,linkcolor=accent,pdfborder={0 0 0}}
+\hypersetup{colorlinks=true,urlcolor=black!60,linkcolor=black,pdfborder={0 0 0}}
 
 \begin{document}
 \thispagestyle{empty}
 
 % ═══════════ HEADER ═══════════
 \begin{center}
-  {\fontsize{22}{24}\selectfont\textbf{Kun Zhang}}\\[4pt]
-  {\small\color{mid}
-    \href{mailto:kzhang.1@alumni.unav.es}{kzhang.1@alumni.unav.es}
-    \quad$\cdot$\quad
+  {\fontsize{22}{26}\selectfont\textbf{Kun Zhang}}\\[4pt]
+  {\small
+    kzhang.1@alumni.unav.es \quad$\cdot$\quad
+    (+34) 677 842 746 \quad$\cdot$\quad
+    Pamplona, Spain\\[2pt]
     \href{https://kunkunz420.github.io}{kunkunz420.github.io}
     \quad$\cdot$\quad
-    \href{https://linkedin.com/in/kunzhang420}{LinkedIn}
+    \href{https://linkedin.com/in/kun-zhang-a52627351}{LinkedIn}
     \quad$\cdot$\quad
     \href{https://github.com/kunkunz420}{GitHub}
-    \quad$\cdot$\quad
-    Pamplona, Spain
   }
 \end{center}
-\vspace{2pt}
 
 % ═══════════ EDUCATION ═══════════
 \section{Education}
 
 \textbf{Universidad de Navarra} \hfill Pamplona, Spain\\
-Master in Economics and Finance (MEF) \hfill \textit{Expected 2026}\\[1pt]
-{\small\color{mid}Relevant: Econometrics, Mathematical Economics, Real Analysis,
-Statistics \& Probability, Advanced Finance, Corporate Finance}
+Master in Economics and Finance (MEF) \hfill Sep.\ 2025 -- Present\\[2pt]
+{\small Thesis: ``Institutional Common Ownership and Executive Mobility''
+(supervisor: Prof.\ Jos\'e Azar). Maintaining top-tier standing.\\
+Relevant: Econometrics, Mathematical Economics, Real Analysis, Statistics \& Probability.}
 
 \vspace{6pt}
 \textbf{Hanyang University} \hfill Seoul, Korea\\
-Exchange, College of Economics and Finance \hfill \textit{Fall 2023}
+Exchange, College of Economics and Finance \hfill Sep.\ 2023 -- Jan.\ 2024\\[2pt]
+{\small GPA: 85/100. Outstanding Exchange Student Award.}
 
 \vspace{6pt}
 \textbf{Yantai Institute of Technology} \hfill Shandong, China\\
-B.A. \hfill \textit{2024}
+B.A.\ in Economics (International Economics \& Trade) \hfill Sep.\ 2021 -- Jul.\ 2024\\[2pt]
+{\small Outstanding Student. Champion, University Python Programming Competition.}
 
 % ═══════════ WORKING PAPER ═══════════
 \section{Working Paper}
 
 {\bfseries\itshape``Institutional Common Ownership and Executive Mobility''}\\[2pt]
 {\small Supervisor: Prof.\ Jos\'e Azar (IESE \& UNAV)}\\[4pt]
-{\small\color{mid}
+{\small
 Exploiting the BlackRock--BGI merger (2009) as a quasi-natural experiment,
 I examine how institutional common ownership shapes C-suite executive mobility.
 Using difference-in-differences and event study designs on a
-\textbf{27.8-million-row panel} linking 13F institutional holdings (58.9M obs.),
-ExecuComp executive data (31,959 executive-years), and Orbis director moves
-(24,716 transitions), I find that common ownership \emph{increases} mobility
-by facilitating within-network labor market channels---rejecting the shadow
-non-compete hypothesis. Robust across 17 pair-level checks, placebo tests,
-and high-dimensional fixed effects.
+\textbf{27.8-million-row firm-pair panel} linking 13F institutional holdings
+(58.9M obs.), ExecuComp data (31,959 executive-years), and Orbis director
+moves (24,716 transitions), I find that common ownership \emph{increases}
+mobility through within-network labor market channels---rejecting the
+shadow non-compete hypothesis. Robust across 17 pair-level checks, 5 placebo
+tests, and high-dimensional fixed effects.
 }
 
 \vspace{4pt}
-{\small\color{mid}\textbf{Methods:}\ \ 
-DiD\ $\cdot$\ Event Study (2005--2020)\ $\cdot$\ FWL high-dim FE\ $\cdot$\ 
-Placebo\ $\cdot$\ RESET\ $\cdot$\ Python (pandas, statsmodels)\ $\cdot$\ 
-Stata\ $\cdot$\ \LaTeX
-}
+{\small\textbf{Presented at:}\ IESE MWOW 2026 (Madrid, May 21--22).}
 
-\vspace{4pt}
-{\small\textbf{Presented at:}\ \ 
-IESE MWOW 2026 (Madrid)\ $\cdot$\ IESE AI Conference (2026)
-}
+% ═══════════ EXPERIENCE ═══════════
+\section{Experience}
 
-% ═══════════ CONFERENCES ═══════════
-\section{Selected Conferences}
+\textbf{China Economic Data Analysis} \hfill Remote\\
+Lead Developer \hfill Oct.\ 2025 -- Present\\[2pt]
+{\small Built automated Python pipeline for macroeconomic indicator analysis.
+Modular code and documentation for reproducibility.}
 
-\textbf{IESE MWOW 2026} \hfill Madrid, May 21--22, 2026\\
-{\small\color{mid}Madrid Work \& Organizations Workshop. Keynotes: Erin L.\ Kelly (MIT Sloan),
-Lauren A.\ Rivera (Kellogg). \emph{Paper presented.}}
-
-\vspace{4pt}
-\textbf{IESE AI Conference} \hfill 2026\\
-{\small\color{mid}Delegate}
-
-\vspace{4pt}
-\textbf{Roads to Development} \hfill 2026\\
-{\small\color{mid}Delegate}
+\vspace{6pt}
+\textbf{Shandong Dongsheng Construction} \hfill Shandong, China\\
+Accounting Intern \hfill Mar.\ 2024 -- Jun.\ 2024\\[2pt]
+{\small Assisted in daily accounting, financial statement preparation,
+and management reporting.}
 
 % ═══════════ SKILLS ═══════════
 \section{Skills \& Languages}
 
 {\small
-\textbf{Technical:}\ \ 
-Python (pandas, statsmodels, NumPy)\ $\cdot$\ Stata\ $\cdot$\ 
-SQL\ $\cdot$\ \LaTeX\ $\cdot$\ Git\ $\cdot$\ JavaScript\\[3pt]
-\textbf{Languages:}\ \ 
-English (C1)\ $\cdot$\ Chinese (Native)\ $\cdot$\ Spanish (A2)\\[6pt]
+\textbf{Technical:}\ Python (pandas, statsmodels, NumPy), Stata, SQL,
+\LaTeX, Git, JavaScript\\[2pt]
+\textbf{Languages:}\ English (C1), Chinese (Native), Spanish (A2)\\[4pt]
 \textbf{Seeking:}\ Pre-doctoral Research Assistant positions (2026--2027),
 with the long-term goal of a Ph.D.\ in Financial Economics.
 }
