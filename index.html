@@ -1,511 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kun Zhang — Master's Candidate in Economics & Finance, Quantitative Researcher. Seeking pre-doctoral RA positions 2026–2027.">
-<title>Kun Zhang — Academic CV</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-/* ─── Design Tokens ─── */
-:root {
-  --paper: #FAF9F6;
-  --surface: #FFFFFF;
-  --surface-raised: #F5F2ED;
-  --ink: #1c1917;
-  --ink-mid: #57534e;
-  --ink-sub: #78716c;
-  --accent: #b45309;
-  --accent-light: #d97706;
-  --accent-bg: rgba(180,83,9,0.06);
-  --accent-bg-hover: rgba(180,83,9,0.12);
-  --border: #e7e5e4;
-  --border-light: #f0efed;
-  --radius: 8px;
-  --radius-lg: 12px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-lg: 0 4px 16px rgba(0,0,0,0.06);
-  --serif: 'Playfair Display', 'Noto Serif', Georgia, serif;
-  --sans: 'Inter', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --spacing-unit: 8px;
-  --content-max: 720px;
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #111110;
-    --surface: #1a1a18;
-    --surface-raised: #222220;
-    --ink: #f0eee8;
-    --ink-mid: #b8b4ad;
-    --ink-sub: #87847c;
-    --accent: #f59e0b;
-    --accent-light: #fbbf24;
-    --accent-bg: rgba(245,158,11,0.08);
-    --accent-bg-hover: rgba(245,158,11,0.14);
-    --border: #2a2a27;
-    --border-light: #1e1e1c;
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
-    --shadow: 0 1px 3px rgba(0,0,0,0.3);
-    --shadow-lg: 0 4px 16px rgba(0,0,0,0.3);
-  }
-}
-
-/* ─── Reset & Base ─── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-body {
-  font-family: var(--sans);
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 400;
-}
-
-/* ─── Focus ─── */
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
-
-/* ─── Layout ─── */
-main { max-width: var(--content-max); margin: 0 auto; padding: 48px 24px 64px; }
-
-/* ─── Section headings ─── */
-.section-label {
-  font-family: var(--sans);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 16px;
-}
-
-/* ─── Card ─── */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  margin-bottom: 24px;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s, border-color 0.2s;
-}
-.card:hover {
-  box-shadow: var(--shadow-lg);
-  border-color: var(--border);
-}
-
-/* ─── Header ─── */
-.cv-header {
-  margin-bottom: 32px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--border);
-}
-.cv-header h1 {
-  font-family: var(--serif);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-  margin-bottom: 4px;
-}
-.cv-header .subtitle {
-  font-family: var(--sans);
-  font-size: 0.9375rem;
-  color: var(--ink-mid);
-  font-weight: 400;
-  margin-bottom: 16px;
-}
-.cv-header .contacts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 20px;
-  font-size: 0.8125rem;
-  color: var(--ink-sub);
-}
-.cv-header .contacts a {
-  color: var(--ink-mid);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s, color 0.2s;
-}
-.cv-header .contacts a:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-.cv-header .contacts .sep { color: var(--border); }
-
-/* ─── Education ─── */
-.edu-item { margin-bottom: 16px; }
-.edu-item:last-child { margin-bottom: 0; }
-.edu-item .school {
-  font-family: var(--serif);
-  font-size: 1.0625rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-.edu-item .meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 4px 12px;
-  margin-top: 2px;
-}
-.edu-item .degree {
-  font-weight: 500;
-  font-size: 0.875rem;
-  color: var(--ink-mid);
-}
-.edu-item .date {
-  font-size: 0.8125rem;
-  color: var(--ink-sub);
-  white-space: nowrap;
-}
-.edu-item .details {
-  font-size: 0.8125rem;
-  color: var(--ink-sub);
-  margin-top: 2px;
-}
-
-/* ─── Research Card ─── */
-.research-card {
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-bg-hover);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  margin-bottom: 24px;
-}
-.research-card .paper-title {
-  font-family: var(--serif);
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--ink);
-  font-style: italic;
-  margin-bottom: 4px;
-}
-.research-card .paper-meta {
-  font-size: 0.8125rem;
-  color: var(--ink-mid);
-  margin-bottom: 12px;
-}
-.research-card .paper-abstract {
-  font-size: 0.875rem;
-  color: var(--ink-mid);
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-.research-card .paper-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
-}
-.tech-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 3px 10px;
-  font-family: var(--sans);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  color: var(--accent);
-  background: var(--accent-bg-hover);
-  border-radius: 20px;
-  white-space: nowrap;
-}
-
-/* ─── Conference items ─── */
-.conf-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border-light);
-}
-.conf-item:last-child { border-bottom: none; padding-bottom: 0; }
-.conf-item:first-child { padding-top: 0; }
-.conf-dot {
-  flex-shrink: 0;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  margin-top: 6px;
-}
-.conf-info { flex: 1; min-width: 0; }
-.conf-info .conf-name {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: var(--ink);
-}
-.conf-info .conf-detail {
-  font-size: 0.8125rem;
-  color: var(--ink-mid);
-  margin-top: 2px;
-  line-height: 1.5;
-}
-.conf-info .conf-date {
-  font-size: 0.75rem;
-  color: var(--ink-sub);
-  margin-top: 1px;
-}
-
-/* ─── Skills ─── */
-.skill-group { margin-bottom: 16px; }
-.skill-group:last-child { margin-bottom: 0; }
-.skill-group .skill-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
-  margin-bottom: 6px;
-}
-.skill-group .skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.skill-tag {
-  display: inline-flex;
-  align-items: center;
-  padding: 4px 12px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--ink-mid);
-  background: var(--surface-raised);
-  border: 1px solid var(--border-light);
-  border-radius: 20px;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-/* ─── CTA ─── */
-.cta-box {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 20px 24px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  box-shadow: var(--shadow-sm);
-}
-.cta-box .cta-text {
-  font-size: 0.875rem;
-  color: var(--ink-mid);
-  font-weight: 500;
-}
-.cta-box .cta-links {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 24px;
-  transition: all 0.2s;
-  cursor: pointer;
-  border: none;
-}
-.cta-btn.primary {
-  background: var(--accent);
-  color: #fff;
-}
-.cta-btn.primary:hover { background: var(--accent-light); }
-.cta-btn.secondary {
-  background: var(--surface);
-  color: var(--ink-mid);
-  border: 1px solid var(--border);
-}
-.cta-btn.secondary:hover {
-  background: var(--surface-raised);
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-/* ─── Footer ─── */
-footer {
-  text-align: center;
-  padding: 32px 24px;
-  font-size: 0.6875rem;
-  color: var(--ink-sub);
-  letter-spacing: 0.04em;
-  border-top: 1px solid var(--border-light);
-}
-footer a { color: var(--ink-mid); text-decoration: none; }
-footer a:hover { color: var(--accent); }
-
-/* ─── Responsive ─── */
-@media (max-width: 600px) {
-  main { padding: 32px 16px 48px; }
-  .cv-header h1 { font-size: 1.5rem; }
-  .cv-header .contacts { font-size: 0.75rem; gap: 4px 12px; }
-  .card, .research-card { padding: 20px; }
-  .cta-box { flex-direction: column; align-items: flex-start; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kun Zhang — Quantitative Finance Researcher</title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #c2410c;
+      --accent-light: #ea580c;
+      --cream: #FAF9F6;
+      --paper: #F5F2ED;
+      --ink: #1c1917;
+      --muted: #78716c;
+      --border: #e7e5e4;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, .serif {
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .section-heading {
+      font-size: 1.75rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 48px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: border-color 0.3s ease, transform 0.2s ease;
+    }
+    .card:hover {
+      border-color: var(--accent-light);
+      transform: translateY(-2px);
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.925rem;
+      background: var(--accent);
+      color: #fff;
+      transition: background 0.25s ease, transform 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      background: #9a3412;
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.925rem;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      background: transparent;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .social-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(194, 65, 12, 0.06);
+      transform: translateY(-2px);
+    }
+    .skill-tag {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--ink);
+      transition: all 0.25s ease;
+    }
+    .skill-tag:hover {
+      border-color: var(--accent-light);
+      background: rgba(234, 88, 12, 0.05);
+    }
+    .accent-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .accent-link:hover {
+      color: #9a3412;
+      text-decoration: underline;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    @media (max-width: 640px) {
+      .profile-img { width: 120px; height: 120px; }
+      .section-heading { font-size: 1.5rem; }
+      .card { padding: 1.25rem; }
+    }
+    @media (min-width: 768px) {
+      .container-main { max-width: 880px; }
+    }
+  </style>
 </head>
 <body>
 
-<main>
-  <!-- ─── HEADER ─── -->
-  <header class="cv-header">
-    <h1>Kun Zhang</h1>
-    <p class="subtitle">Quantitative Researcher · Master's Candidate in Economics &amp; Finance</p>
-    <div class="contacts">
-      <a href="mailto:kzhang.1@alumni.unav.es">kzhang.1@alumni.unav.es</a>
-      <span class="sep" aria-hidden="true">·</span>
-      <a href="https://kunkunz420.github.io">kunkunz420.github.io</a>
-      <span class="sep" aria-hidden="true">·</span>
-      <a href="https://linkedin.com/in/kunzhang420" rel="me">LinkedIn</a>
-      <span class="sep" aria-hidden="true">·</span>
-      <a href="https://github.com/kunkunz420" rel="me">GitHub</a>
-      <span class="sep" aria-hidden="true">·</span>
-      Pamplona, Spain
+  <!-- ========== HERO ========== -->
+  <header class="relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(250,249,246,0) 0%, rgba(245,242,237,0.6) 100%);"></div>
+    <div class="container-main mx-auto px-5 sm:px-8 pt-16 pb-14 sm:pt-24 sm:pb-20 text-center relative z-10">
+      
+      <!-- Profile Picture -->
+      <div class="mb-6 flex justify-center">
+        <img src="./pic/profile.jpg" alt="Kun Zhang" class="profile-img" onerror="this.style.display='none'">
+      </div>
+
+      <!-- Name & Title -->
+      <h1 class="text-4xl sm:text-5xl font-bold mb-2" style="color: var(--ink);">Kun Zhang</h1>
+      <p class="text-lg sm:text-xl font-light mb-8" style="color: var(--muted); max-width: 600px; margin-left: auto; margin-right: auto;">
+        Master's Candidate in Economics &amp; Finance  ·  Quantitative Researcher
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <a href="./pic/CV.pdf" target="_blank" class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+        <a href="#research" class="btn-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-5"/></svg>
+          View Research
+        </a>
+      </div>
+
+      <!-- Contact Links -->
+      <div class="flex flex-wrap justify-center gap-3">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/kun-zhang-a52627351/" target="_blank" class="social-link" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/kunkunz420" target="_blank" class="social-link" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        </a>
+        <!-- Email -->
+        <a href="mailto:zkun56873@gmail.com" class="social-link" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+
+      <!-- Additional Email Line -->
+      <p class="mt-4 text-sm" style="color: var(--muted);">
+        <span class="font-medium">kzhang.1@alumni.unav.es</span>
+      </p>
+
     </div>
   </header>
 
-  <!-- ─── EDUCATION ─── -->
-  <section aria-labelledby="edu-heading" style="margin-bottom:32px">
-    <div class="section-label" id="edu-heading">Education</div>
-    <div class="card">
-      <div class="edu-item">
-        <a href="https://www.unav.edu/" target="_blank" rel="noopener" class="school" style="text-decoration:none;color:var(--ink)">Universidad de Navarra</a>
-        <div class="meta">
-          <span class="degree">Master in Economics and Finance (MEF)</span>
-          <span class="date">Expected 2026</span>
-        </div>
-        <p class="details">Relevant: Econometrics, Mathematical Economics, Real Analysis, Statistics &amp; Probability, Advanced Finance, Corporate Finance</p>
-      </div>
-      <div class="edu-item">
-        <span class="school">Hanyang University</span>
-        <div class="meta">
-          <span class="degree">Exchange, College of Economics and Finance</span>
-          <span class="date">Fall 2023</span>
-        </div>
-      </div>
-      <div class="edu-item">
-        <span class="school">Yantai Institute of Technology</span>
-        <div class="meta">
-          <span class="degree">B.A., <em>cum laude</em></span>
-          <span class="date">2024</span>
-        </div>
-      </div>
+  <!-- ========== NAVIGATION (Sticky) ========== -->
+  <nav class="sticky top-0 z-50 border-b" style="background: rgba(250,249,246,0.92); backdrop-filter: blur(12px); border-color: var(--border);">
+    <div class="container-main mx-auto px-5 sm:px-8 flex items-center justify-center gap-6 sm:gap-10 py-3 text-sm font-medium overflow-x-auto" style="color: var(--muted);">
+      <a href="#about" class="hover:underline transition-all duration-200" style="text-decoration-color: var(--accent); text-underline-offset: 4px;">About</a>
+      <a href="#education" class="hover:underline transition-all duration-200" style="text-decoration-color: var(--accent); text-underline-offset: 4px;">Education</a>
+      <a href="#research" class="hover:underline transition-all duration-200" style="text-decoration-color: var(--accent); text-underline-offset: 4px;">Research</a>
+      <a href="#projects" class="hover:underline transition-all duration-200" style="text-decoration-color: var(--accent); text-underline-offset: 4px;">Projects</a>
+      <a href="#conferences" class="hover:underline transition-all duration-200" style="text-decoration-color: var(--accent); text-underline-offset: 4px;">Conferences</a>
+      <a href="#skills" class="hover:underline transition-all duration-200" style="text-decoration-color: var(--accent); text-underline-offset: 4px;">Skills</a>
     </div>
-  </section>
+  </nav>
 
-  <!-- ─── RESEARCH ─── -->
-  <section aria-labelledby="research-heading" style="margin-bottom:32px">
-    <div class="section-label" id="research-heading">Research</div>
-    <div class="research-card">
-      <h3 class="paper-title">&ldquo;Institutional Common Ownership and Executive Mobility&rdquo;</h3>
-      <p class="paper-meta">Supervisor: Prof. José Azar (IESE &amp; UNAV) · Working Paper · <a href="./pic/CV.pdf" style="color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)">Download CV (PDF) &darr;</a></p>
-      <p class="paper-abstract">
-        Exploiting the BlackRock-BGI merger (2009) as a quasi-natural experiment, I examine how institutional common ownership shapes C-suite executive mobility. Using difference-in-differences and event study designs on a <strong>27.8-million-row panel</strong> linking 13F institutional holdings (58.9M observations), ExecuComp executive data (31,959 executive-years), and Orbis director moves (24,716 transitions), I find that common ownership <em>increases</em> mobility by facilitating within-network labor market channels &mdash; rejecting the shadow non-compete hypothesis. Robust to 17 pair-level checks, placebo tests, and high-dimensional fixed effects.
-      </p>
-      <div class="paper-tech">
-        <span class="tech-tag">27.8M panel</span>
-        <span class="tech-tag">DiD + Event Study</span>
-        <span class="tech-tag">FWL high-dim FE</span>
-        <span class="tech-tag">Placebo tests</span>
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">Stata</span>
-        <span class="tech-tag">LaTeX</span>
+  <!-- ========== MAIN ========== -->
+  <main class="container-main mx-auto px-5 sm:px-8 py-14 sm:py-20">
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="mb-16 sm:mb-20 scroll-mt-20">
+      <h2 class="section-heading">About Me</h2>
+      <div class="card">
+        <p class="leading-relaxed" style="color: var(--ink);">
+          Specialized in <strong>Advanced Finance</strong> and <strong>Econometrics</strong>, with technical expertise 
+          in <strong>Python</strong> and <strong>Stata</strong>. Combining academic excellence from the 
+          <a href="https://www.unav.edu/" target="_blank" class="accent-link">University of Navarra</a> and 
+          <a href="https://www.hanyang.ac.kr/" target="_blank" class="accent-link">Hanyang University</a> with 
+          practical experience in quantitative research and epidemiological-economic modeling.
+        </p>
+          <p class="mt-4 leading-relaxed" style="color: var(--muted);">
+            My research lies at the intersection of corporate finance, labor economics, and quantitative methods. 
+            I am particularly interested in how institutional ownership structures shape executive labor markets, 
+            and how behavioral-economic principles can enrich epidemiological modeling frameworks.
+            My master's thesis — a completed working paper — uses DiD and event study designs on a 
+            27.8-million-row panel to study how common ownership affects C-suite executive mobility.
+          </p>
+          <p class="mt-4 leading-relaxed" style="color: var(--ink);">
+            I am currently actively seeking <strong>Research Assistant (RA)</strong> positions at universities and 
+            academic institutions, with the long-term goal of pursuing a <strong>Ph.D.</strong> to deepen my research 
+            in financial economics and quantitative methods. 
+            <a href="./ra-strategy/" class="accent-link">View my RA application strategy &rarr;</a>
+          </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ─── CONFERENCES ─── -->
-  <section aria-labelledby="conf-heading" style="margin-bottom:32px">
-    <div class="section-label" id="conf-heading">Conferences</div>
-    <div class="card">
-      <div class="conf-item">
-        <div class="conf-dot" aria-hidden="true"></div>
-        <div class="conf-info">
-          <div class="conf-name">IESE MWOW 2026</div>
-          <div class="conf-detail">
-            Madrid Work &amp; Organizations Workshop. Keynotes: Erin L. Kelly (MIT Sloan), Lauren A. Rivera (Kellogg).<br>
-            <em>Paper presented: &ldquo;Institutional Common Ownership and Executive Mobility&rdquo;</em>
+    <!-- ===== EDUCATION ===== -->
+    <section id="education" class="mb-16 sm:mb-20 scroll-mt-20">
+      <h2 class="section-heading">Education</h2>
+      <div class="grid gap-5">
+
+        <!-- Universidad de Navarra -->
+        <div class="card">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
+            <h3 class="text-xl font-semibold" style="font-family: 'Playfair Display', serif;">
+              <a href="https://www.unav.edu/" target="_blank" class="hover:underline" style="color: var(--ink); text-decoration-color: var(--accent);">
+                Universidad de Navarra
+              </a>
+            </h3>
+            <span class="text-sm whitespace-nowrap" style="color: var(--muted);">2026 (Expected Graduation)</span>
           </div>
-          <div class="conf-date">May 21&ndash;22, 2026 · Madrid</div>
+          <p class="text-base font-semibold mb-1">Master in Economics and Finance (MEF)</p>
+          <p class="text-sm mb-3" style="color: var(--muted);">
+            Pamplona, Spain
+          </p>
+          <div>
+            <p class="text-sm font-medium mb-1" style="color: var(--ink);">Relevant Coursework:</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag text-xs" style="font-size: 0.8rem;">Real Analysis</span>
+              <span class="skill-tag text-xs" style="font-size: 0.8rem;">Econometrics</span>
+              <span class="skill-tag text-xs" style="font-size: 0.8rem;">Mathematical Economics</span>
+              <span class="skill-tag text-xs" style="font-size: 0.8rem;">Statistics &amp; Probability</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hanyang University -->
+        <div class="card">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
+            <h3 class="text-xl font-semibold" style="font-family: 'Playfair Display', serif;">
+              <a href="https://www.hanyang.ac.kr/" target="_blank" class="hover:underline" style="color: var(--ink); text-decoration-color: var(--accent);">
+                Hanyang University
+              </a>
+            </h3>
+            <span class="text-sm whitespace-nowrap" style="color: var(--muted);">Fall 2023</span>
+          </div>
+          <p class="text-base font-semibold mb-1">Exchange Program in Economics</p>
+          <p class="text-sm" style="color: var(--muted);">
+            Department of Economics, Ansan, Gyeonggi-do, South Korea
+          </p>
+          <p class="text-sm mb-3" style="color: var(--muted);">
+            Major coursework includes Asian Economic Culture, Global Macroeconomics, Game Theory, and Microeconomics.
+          </p>
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span class="text-sm font-medium" style="color: var(--accent);">Outstanding Exchange Student Award</span>
+          </div>
+        </div>
+
+        <!-- Yantai Institute of Technology -->
+        <div class="card">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
+            <h3 class="text-xl font-semibold" style="font-family: 'Playfair Display', serif;">
+              <span style="color: var(--ink);">Yantai Institute of Technology</span>
+            </h3>
+            <span class="text-sm whitespace-nowrap" style="color: var(--muted);">2024</span>
+          </div>
+          <p class="text-base font-semibold mb-1">BA in International Economics and Trade</p>
+          <p class="text-sm mb-3" style="color: var(--muted);">
+            Minor in Finance and Computer Science
+          </p>
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span class="text-sm" style="color: var(--ink);">1st Prize in University English Speaking Competition</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span class="text-sm" style="color: var(--ink);">Awarded Outstanding Student Exchange Opportunity to study at Hanyang University</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== RESEARCH ===== -->
+    <section id="research" class="mb-16 sm:mb-20 scroll-mt-20">
+      <h2 class="section-heading">Core Research</h2>
+
+      <div class="card">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
+          <h3 class="text-xl font-semibold" style="font-family: 'Playfair Display', serif;">
+            Institutional Common Ownership and Executive Mobility
+          </h3>
+          <span class="text-sm whitespace-nowrap" style="color: var(--muted);">Working Paper</span>
+        </div>
+        <p class="text-sm mb-3" style="color: var(--muted);">
+          Supervisor: Prof. Jose Azar
+        </p>
+        <p class="leading-relaxed mb-4" style="color: var(--ink);">
+          This paper investigates <strong>institutional common ownership</strong> as an <strong>informal non-compete mechanism</strong> 
+          in executive labor markets. I execute a <strong>Difference-in-Differences</strong> design leveraging the 
+          <strong>2009 BlackRock–BGI merger</strong> as a quasi-experimental shock to common ownership structures. 
+          The analysis quantifies competitive effects through <strong>MHHI Delta metrics</strong> implemented in 
+          <strong>Stata</strong>, examining how overlapping institutional ownership among industry peers reduces 
+          cross-firm executive mobility.
+        </p>
+        <a href="./pic/abstract.pdf" target="_blank" class="btn-outline text-sm" style="padding: 0.55rem 1.3rem; font-size: 0.875rem;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Read Abstract
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="mb-16 sm:mb-20 scroll-mt-20">
+      <h2 class="section-heading">Open Source Projects</h2>
+
+      <div class="card">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
+          <h3 class="text-xl font-semibold" style="font-family: 'Playfair Display', serif;">
+            <a href="https://github.com/kunkunz420/ANDV-Behavioral-SEIRQ" target="_blank" class="hover:underline" style="color: var(--ink); text-decoration-color: var(--accent);">
+              ANDV-Behavioral-SEIRQ
+            </a>
+          </h3>
+          <a href="https://github.com/kunkunz420/ANDV-Behavioral-SEIRQ" target="_blank" class="text-sm whitespace-nowrap accent-link flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub
+          </a>
+        </div>
+
+        <p class="leading-relaxed mb-3" style="color: var(--ink);">
+          <strong>Andes Virus Epidemiological-Economic Model</strong> — a sophisticated, multi-language 
+          pipeline integrating <strong>behavioral economics</strong> with <strong>SEIRQ epidemiological dynamics</strong> 
+          to model the transmission of the Andes Virus (ANDV) under endogenous human behavioral responses.
+        </p>
+
+        <div class="space-y-2 mb-3">
+          <p style="color: var(--ink);">
+            <strong>Behavioral-Economic Core.</strong> The model extends the canonical SEIRQ framework by 
+            incorporating a <strong>behavioral feedback loop</strong>: agents adjust their social contact rates 
+            in response to perceived infection risk, prevalence information, and economic constraints. This 
+            micro-founded approach captures the two-way interaction between epidemic dynamics and human 
+            decision-making — a feature absent from purely epidemiological models.
+          </p>
+          <p style="color: var(--ink);">
+            <strong>Multi-Language Implementation.</strong> The pipeline is engineered across 
+            <strong>Python, R, Stata, and MATLAB</strong>, enabling seamless integration with existing 
+            econometric workflows. Parameter estimation routines leverage maximum likelihood and Bayesian 
+            methods across languages, while sensitivity analyses and counterfactual simulations are 
+            parallelized for computational efficiency.
+          </p>
+          <p style="color: var(--ink);">
+            <strong>Advanced Parameter Extraction.</strong> The model implements sophisticated calibration 
+            techniques for the basic reproduction number (<em>R</em><sub>0</sub>), behavioral response elasticities, 
+            and quarantine effectiveness parameters. Real-world ANDV incidence data from public health 
+            repositories is harmonized with economic time series to estimate structural parameters and 
+            evaluate policy counterfactuals under various behavioral scenarios.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <span class="skill-tag text-xs" style="font-size: 0.8rem;">Python</span>
+          <span class="skill-tag text-xs" style="font-size: 0.8rem;">R</span>
+          <span class="skill-tag text-xs" style="font-size: 0.8rem;">Stata</span>
+          <span class="skill-tag text-xs" style="font-size: 0.8rem;">MATLAB</span>
+          <span class="skill-tag text-xs" style="font-size: 0.8rem;">SEIRQ</span>
+          <span class="skill-tag text-xs" style="font-size: 0.8rem;">Behavioral Econ</span>
+          <span class="skill-tag text-xs" style="font-size: 0.8rem;">Bayesian</span>
         </div>
       </div>
-      <div class="conf-item">
-        <div class="conf-dot" aria-hidden="true"></div>
-        <div class="conf-info">
-          <div class="conf-name">IESE AI Conference</div>
-          <div class="conf-detail">Delegate</div>
-          <div class="conf-date">2026</div>
+    </section>
+
+    <!-- ===== CONFERENCES ===== -->
+    <section id="conferences" class="mb-16 sm:mb-20 scroll-mt-20">
+      <h2 class="section-heading">Conferences</h2>
+
+      <div class="space-y-4">
+
+        <!-- Roads to Development -->
+        <div class="card flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style="background: rgba(194, 65, 12, 0.08);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-base font-semibold" style="color: var(--ink);">
+              <a href="https://www.unav.edu/web/roads-to-development" target="_blank" class="hover:underline" style="color: var(--ink); text-decoration-color: var(--accent);">
+                Roads to Development International Conference
+              </a>
+            </h3>
+            <p class="text-sm" style="color: var(--muted);">University of Navarra — 2026</p>
+          </div>
+          <span class="text-xs font-medium px-3 py-1 rounded-full whitespace-nowrap" style="background: rgba(194, 65, 12, 0.08); color: var(--accent);">Participant</span>
+        </div>
+
+        <!-- IESE AI Conference -->
+        <div class="card flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style="background: rgba(194, 65, 12, 0.08);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-base font-semibold" style="color: var(--ink);">
+              <a href="https://www.iese.edu/faculty-research/economics-ai-conference-2026/" target="_blank" class="hover:underline" style="color: var(--ink); text-decoration-color: var(--accent);">
+                IESE AI Conference
+              </a>
+            </h3>
+            <p class="text-sm" style="color: var(--muted);">IESE Business School — 2026</p>
+          </div>
+          <span class="text-xs font-medium px-3 py-1 rounded-full whitespace-nowrap" style="background: rgba(194, 65, 12, 0.08); color: var(--accent);">Delegate</span>
+        </div>
+
+        <!-- Madrid Work & Organizations Workshop -->
+        <div class="card flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-5">
+          <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style="background: rgba(194, 65, 12, 0.08);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
+              <h3 class="text-base font-semibold" style="color: var(--ink);">IESE MWOW 2026</h3>
+              <span class="text-xs font-medium px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0" style="background: rgba(194, 65, 12, 0.08); color: var(--accent);">Paper Presenter</span>
+            </div>
+            <p class="text-sm mb-2" style="color: var(--muted);">IESE Madrid Work &amp; Organizations Workshop — May 21-22, 2026</p>
+            <p class="text-sm leading-relaxed" style="color: var(--ink);">
+              Presented my thesis <em>"Institutional Common Ownership and Executive Mobility"</em>
+              at the roundtable session. <strong>Keynote speakers:</strong> Erin L. Kelly (MIT Sloan) and Lauren A. Rivera (Kellogg).
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" class="scroll-mt-20">
+      <h2 class="section-heading">Skills</h2>
+
+      <div class="card">
+        <!-- Technical -->
+        <div class="mb-6">
+          <h3 class="text-base font-semibold mb-3" style="color: var(--ink);">Technical</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag">Stata</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">LaTeX</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div>
+          <h3 class="text-base font-semibold mb-3" style="color: var(--ink);">Languages</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag flex items-center gap-1">
+              English
+              <span class="text-xs" style="color: var(--muted);">C1</span>
+            </span>
+            <span class="skill-tag flex items-center gap-1">
+              Spanish
+              <span class="text-xs" style="color: var(--muted);">A2</span>
+            </span>
+            <span class="skill-tag flex items-center gap-1">
+              Chinese
+              <span class="text-xs" style="color: var(--muted);">Native</span>
+            </span>
+          </div>
         </div>
       </div>
-      <div class="conf-item">
-        <div class="conf-dot" aria-hidden="true"></div>
-        <div class="conf-info">
-          <div class="conf-name">Roads to Development</div>
-          <div class="conf-detail">Delegate</div>
-          <div class="conf-date">2026</div>
-        </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer style="border-top: 1px solid var(--border); background: var(--paper);">
+    <div class="container-main mx-auto px-5 sm:px-8 py-8 text-center">
+      <p class="text-sm" style="color: var(--muted);">
+        &copy; 2026 Kun Zhang. Built with care.
+      </p>
+      <div class="flex justify-center gap-3 mt-3">
+        <a href="https://www.linkedin.com/in/kun-zhang-a52627351/" target="_blank" class="text-xs hover:underline" style="color: var(--muted); text-decoration-color: var(--accent);">LinkedIn</a>
+        <span style="color: var(--border);">·</span>
+        <a href="https://github.com/kunkunz420" target="_blank" class="text-xs hover:underline" style="color: var(--muted); text-decoration-color: var(--accent);">GitHub</a>
+        <span style="color: var(--border);">·</span>
+        <a href="mailto:zkun56873@gmail.com" class="text-xs hover:underline" style="color: var(--muted); text-decoration-color: var(--accent);">Email</a>
       </div>
     </div>
-  </section>
-
-  <!-- ─── SKILLS & CTA ─── -->
-  <section aria-labelledby="skills-heading" style="margin-bottom:32px">
-    <div class="section-label" id="skills-heading">Skills &amp; Languages</div>
-    <div class="card">
-      <div class="skill-group">
-        <div class="skill-label">Technical</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Python (pandas, statsmodels, NumPy)</span>
-          <span class="skill-tag">Stata</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">LaTeX</span>
-          <span class="skill-tag">Git</span>
-          <span class="skill-tag">JavaScript</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <div class="skill-label">Languages</div>
-        <div class="skill-tags">
-          <span class="skill-tag">English (C1)</span>
-          <span class="skill-tag">Chinese (Native)</span>
-          <span class="skill-tag">Spanish (A2)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── CTA ─── -->
-  <div class="cta-box">
-    <span class="cta-text">Seeking pre-doctoral RA positions 2026&ndash;2027</span>
-    <div class="cta-links">
-      <a href="./pic/CV.pdf" class="cta-btn primary" download>Download CV (PDF)</a>
-      <a href="./ra-strategy/" class="cta-btn secondary">RA Strategy &rarr;</a>
-    </div>
-  </div>
-</main>
-
-<footer>
-  &copy; 2026 Kun Zhang · Updated June 2026 · 
-  <a href="https://github.com/kunkunz420/kunkunz420.github.io">source</a>
-</footer>
+  </footer>
 
 </body>
 </html>
