@@ -5,6 +5,7 @@
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage{fontspec}
+\usepackage{xcolor}
 
 \setmainfont{SmartisanCompactCNS-Regular}
 \newfontfamily\boldfont{SmartisanCompactCNS-Bold}
@@ -15,8 +16,8 @@
 \hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,pdfborder={0 0 0}}
 
 % Section: small caps, Bold, with thin rule
-\titleformat{\section}{\boldfont\scshape\fontsize{11}{13}\selectfont}{}{0pt}{}[\vspace{-3pt}\rule{\textwidth}{0.3pt}]
-\titlespacing{\section}{0pt}{7pt}{1pt}
+\titleformat{\section}{\boldfont\scshape\fontsize{11}{13}\selectfont}{}{0pt}{}[\vspace{-7pt}{\color{black!30}\rule{\textwidth}{0.4pt}}]
+\titlespacing{\section}{0pt}{7pt}{0pt}
 
 % Small helper for left-right lines
 \newcommand{\entry}[2]{\textbf{#1}\hfill{\small #2}}
