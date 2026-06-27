@@ -22,11 +22,72 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: Georgia, 'Times New Roman', serif;
       background: var(--cream);
       color: var(--ink);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Sidebar ─── */
+    .sidebar {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: 220px;
+      background: var(--paper);
+      border-right: 1px solid var(--border);
+      padding: 40px 24px 24px;
+      display: flex; flex-direction: column;
+      z-index: 50;
+    }
+    .sidebar .s-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--ink); margin-bottom: 4px;
+    }
+    .sidebar .s-desc {
+      font-size: 0.75rem; color: var(--muted);
+      margin-bottom: 28px; line-height: 1.5;
+    }
+    .sidebar .s-nav {
+      list-style: none; flex: 1;
+    }
+    .sidebar .s-nav li { margin-bottom: 4px; }
+    .sidebar .s-nav a {
+      display: block; padding: 6px 12px;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--muted); text-decoration: none;
+      border-radius: 6px; letter-spacing: 0.02em;
+      transition: all 0.2s;
+    }
+    .sidebar .s-nav a:hover { color: var(--ink); background: rgba(0,0,0,0.03); }
+    .sidebar .s-nav a.active { color: var(--accent); background: rgba(194,65,12,0.08); font-weight: 600; }
+    .sidebar .s-social {
+      display: flex; gap: 8px; margin-top: 16px;
+    }
+    .sidebar .s-social a {
+      width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+      border-radius: 6px; color: var(--muted); transition: all 0.2s; text-decoration: none;
+    }
+    .sidebar .s-social a:hover { color: var(--accent); background: rgba(194,65,12,0.06); }
+    .sidebar .s-resume {
+      margin-top: 16px; font-size: 0.72rem;
+    }
+    .sidebar .s-resume a {
+      display: inline-block; padding: 5px 14px;
+      background: var(--accent); color: #fff;
+      border-radius: 6px; text-decoration: none; font-weight: 500;
+      font-size: 0.72rem; letter-spacing: 0.03em;
+      transition: background 0.2s;
+    }
+    .sidebar .s-resume a:hover { background: #9a3412; }
+
+    /* ─── Main content offset ─── */
+    main { margin-left: 220px; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      main { margin-left: 0; }
     }
     h1, h2, h3, h4, .serif {
       font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -160,6 +221,36 @@
 </head>
 <body>
 
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" aria-label="Site navigation">
+    <div class="s-name">Kun Zhang</div>
+    <div class="s-desc">Quantitative Researcher<br>MEF Candidate, UNAV</div>
+    <ul class="s-nav" id="sideNav">
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#conferences">Conferences</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+    <div class="s-social">
+      <a href="https://linkedin.com/in/kun-zhang-a52627351" target="_blank" rel="me" title="LinkedIn" aria-label="LinkedIn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="https://github.com/kunkunz420" target="_blank" rel="me" title="GitHub" aria-label="GitHub">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      </a>
+      <a href="mailto:kzhang.1@alumni.unav.es" title="Email" aria-label="Email">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+    <div class="s-resume">
+      <a href="./pic/CV.pdf">Resume &darr;</a>
+    </div>
+  </aside>
+
+  <main>
+
   <!-- ========== HERO ========== -->
   <header class="relative overflow-hidden">
     <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(180deg, rgba(250,249,246,0) 0%, rgba(245,242,237,0.6) 100%);"></div>
@@ -239,17 +330,13 @@
           practical experience in quantitative research and epidemiological-economic modeling.
         </p>
           <p class="mt-4 leading-relaxed" style="color: var(--muted);">
-            My research lies at the intersection of corporate finance, labor economics, and quantitative methods. 
-            I am particularly interested in how institutional ownership structures shape executive labor markets, 
-            and how behavioral-economic principles can enrich epidemiological modeling frameworks.
-            My master's thesis — a completed working paper — uses DiD and event study designs on a 
-            27.8-million-row panel to study how common ownership affects C-suite executive mobility.
+            My master's thesis — a completed working paper under Prof. José Azar — uses DiD and event study
+            designs on a 27.8-million-row panel to study how institutional common ownership shapes C-suite
+            executive mobility. I presented this work at the IESE MWOW 2026 conference in Madrid.
           </p>
           <p class="mt-4 leading-relaxed" style="color: var(--ink);">
-            I am currently actively seeking <strong>Research Assistant (RA)</strong> positions at universities and 
-            academic institutions, with the long-term goal of pursuing a <strong>Ph.D.</strong> to deepen my research 
-            in financial economics and quantitative methods. 
-            <a href="./ra-strategy/" class="accent-link">View my RA application strategy &rarr;</a>
+            I am currently seeking <strong>Research Assistant (RA)</strong> positions at universities and
+            academic institutions, with the long-term goal of pursuing a <strong>Ph.D.</strong> in financial economics.
           </p>
       </div>
     </section>
@@ -539,6 +626,24 @@
       </div>
     </div>
   </footer>
+
+  </main>
+
+  <!-- ─── Scroll Spy ─── -->
+  <script>
+  (function(){
+    const links = document.querySelectorAll('#sideNav a');
+    const sections = [...links].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const offset = 100;
+    function onScroll(){
+      let current = sections[0]?.id || '';
+      sections.forEach(s => { if(window.scrollY >= s.offsetTop - offset) current = s.id; });
+      links.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+  </script>
 
 </body>
 </html>
