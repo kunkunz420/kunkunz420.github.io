@@ -1,16 +1,15 @@
 % !TEX program = xelatex
 \documentclass[10pt, letterpaper]{article}
 
-\usepackage[margin=0.75in]{geometry}
+\usepackage[margin=0.75in,top=0.7in,bottom=0.6in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{fontspec}
 
-% ─── Smartisan (3 weights) ───
+% ─── Smartisan (2 weights: Regular + Bold) ───
 \setmainfont{SmartisanCompactCNS-Regular}
 \newfontfamily\boldfont{SmartisanCompactCNS-Bold}
-\newfontfamily\heavyfont{SmartisanCompactCNS-Heavy}
 \DeclareTextFontCommand{\textbf}{\boldfont}
 
 \hypersetup{
@@ -21,16 +20,16 @@
 }
 
 % Section: uppercase, bold, Heavy, with rule
-\titleformat{\section}{\heavyfont\large\uppercase}{}{0pt}{}[\titlerule]
-\titlespacing{\section}{0pt}{12pt}{6pt}
+\titleformat{\section}{\boldfont\large\uppercase}{}{0pt}{}[\titlerule]
+\titlespacing{\section}{0pt}{14pt}{7pt}
 
-\newcommand{\resumeItem}[1]{\item\small{#1 \vspace{-2pt}}}
+\newcommand{\resumeItem}[1]{\item\small{#1\vspace{-1pt}}}
 
 \begin{document}
 
 % ─── HEADER ───
 \begin{center}
-    {\heavyfont\LARGE Kun Zhang}\\[2pt]
+    {\boldfont\LARGE Kun Zhang}\\[2pt]
     {\itshape Pre-doctoral Researcher}\\[4pt]
     \small kzhang.1@alumni.unav.es ~|~ (+34) 677 842 746 ~|~ Pamplona, Spain \\
     \href{https://kunkunz420.github.io}{kunkunz420.github.io} ~|~ \href{https://linkedin.com/in/kun-zhang-a52627351}{LinkedIn} ~|~ \href{https://github.com/kunkunz420}{GitHub}
