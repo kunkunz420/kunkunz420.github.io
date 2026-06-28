@@ -1,23 +1,27 @@
 % !TEX program = xelatex
 \documentclass[9.5pt, letterpaper]{article}
 
-\usepackage[margin=0.75in,top=0.5in,bottom=0.4in]{geometry}
+\usepackage[margin=0.7in,top=0.45in,bottom=0.35in]{geometry}
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage{fontspec}
-\usepackage{xcolor}
 
-\setmainfont{SmartisanCompactCNS-Regular}
+\setmainfont{SmartisanCompactCNS-Regular}[
+  BoldFont=SmartisanCompactCNS-Bold,
+  ItalicFont=SmartisanCompactCNS-Regular,
+  ItalicFeatures={FakeSlant=0.2}
+]
 \newfontfamily\boldfont{SmartisanCompactCNS-Bold}
 \DeclareTextFontCommand{\textbf}{\boldfont}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
+\linespread{1.05}
 \hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,pdfborder={0 0 0}}
 
-% Section: small caps, Bold, with thin rule
-\titleformat{\section}{\boldfont\scshape\fontsize{11}{13}\selectfont}{}{0pt}{}[\vspace{-7pt}{\color{black!30}\rule{\textwidth}{0.4pt}}]
-\titlespacing{\section}{0pt}{7pt}{0pt}
+% Section: small caps, Bold, no rule
+\titleformat{\section}{\boldfont\scshape\fontsize{11}{13}\selectfont}{}{0pt}{}
+\titlespacing{\section}{0pt}{11pt}{6pt}
 
 % Small helper for left-right lines
 \newcommand{\entry}[2]{\textbf{#1}\hfill{\small #2}}
@@ -27,8 +31,8 @@
 
 % ═══════════ HEADER ═══════════
 \begin{center}
-  {\boldfont\LARGE Kun Zhang}\\[3pt]
-  {\small Pre-doctoral Researcher}\\[6pt]
+  {\boldfont\LARGE Kun Zhang}\\[2pt]
+  {\small Pre-doctoral Researcher}\\[4pt]
   {\small
     kzhang.1@alumni.unav.es \;$\cdot$\; (+34) 677 842 746 \;$\cdot$\; Pamplona, Spain\\[3pt]
     \href{https://kunkunz420.github.io}{kunkunz420.github.io}
@@ -50,8 +54,8 @@ Ph.D.\ in Financial Economics.
 % ═══════════ WORKING PAPER ═══════════
 \section*{Working Paper}
 
-\noindent\textbf{Institutional Common Ownership and Executive Mobility}\\[3pt]
-{\small Supervisor: Prof.\ Jos\'e Azar (IESE \& UNAV)}\\[4pt]
+\noindent\textbf{Institutional Common Ownership and Executive Mobility}\\[2pt]
+{\small Supervisor: Prof.\ Jos\'e Azar (IESE \& UNAV)}\\[3pt]
 
 \small
 Exploiting the BlackRock--BGI merger (2009) as a quasi-natural experiment, I examine how
@@ -72,14 +76,14 @@ $\Delta\lambda = +0.582$ ($p < 10^{-18}$). Event study: Post-2009 significant
 
 \entry{IESE MWOW 2026}{May 21--22, 2026}\\[2pt]
 {\small Madrid Work \& Organizations Workshop. Paper presented.}\\[1pt]
-{\small Keynotes: Erin L.\ Kelly (MIT Sloan), Lauren A.\ Rivera (Kellogg).}\\[4pt]
+{\small Keynotes: Erin L.\ Kelly (MIT Sloan), Lauren A.\ Rivera (Kellogg).}\\[3pt]
 
 \noindent\textbf{IESE AI Conference 2026} \;$\cdot$\; \textbf{Roads to Development 2026}
 
 % ═══════════ EDUCATION ═══════════
 \section*{Education}
 
-\entry{Universidad de Navarra}{Sep.\ 2025 -- Present}\\[2pt]
+\entry{University of Navarra}{Sep.\ 2025 -- Present}\\[2pt]
 {\small Master in Economics and Finance (MEF), Pamplona, Spain}\\[1pt]
 {\small Relevant: Econometrics, Mathematical Economics, Real Analysis, Statistics.}\\[5pt]
 
@@ -94,7 +98,10 @@ $\Delta\lambda = +0.582$ ($p < 10^{-18}$). Event study: Post-2009 significant
 
 \entry{China Economic Data Analysis --- Lead Developer}{Oct.\ 2025 -- Present}\\[3pt]
 
-\entry{Shandong Dongsheng Construction --- Accounting Intern}{Mar.\ 2024 -- Jun.\ 2024}
+\entry{Shandong Dongsheng Construction --- Accounting Intern}{Mar.\ 2024 -- Jun.\ 2024}\\[2pt]
+{\small\itshape Applied Excel skills from undergraduate coursework to data analysis,
+accounting reconciliation, and Monte Carlo simulations; conducted regression analysis
+using basic Python and Stata.}
 
 % ═══════════ HONORS ═══════════
 \section*{Honors}
@@ -110,7 +117,7 @@ University Python Programming Champion (Yantai, 2023)
 \section*{Skills \& Languages}
 
 \small
-\textbf{Technical:} Python (pandas, statsmodels, NumPy), Stata, SQL, \LaTeX, Git, JavaScript\\[4pt]
+\textbf{Technical:} Python (pandas, statsmodels, NumPy), Stata, SQL, \LaTeX, Git, JavaScript\\[3pt]
 \textbf{Languages:} English (C1), Chinese (Native), Spanish (A2)
 
 \end{document}

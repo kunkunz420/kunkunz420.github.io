@@ -9,13 +9,13 @@ kunkunz420.github.io · kunkunz420.github.io/ra-strategy
 
 ## PERSONAL SUMMARY
 
-Master's candidate in Economics and Finance at Universidad de Navarra with a completed working paper on institutional common ownership and executive mobility. Solid quantitative background with specialized training in Advanced Finance and Econometrics, and technical expertise in Python and Stata. Experienced in large-scale panel data construction (27.8M rows), quasi-experimental causal inference (DiD, Event Study), and high-dimensional fixed effects modeling. Seeking pre-doctoral Research Assistant positions in the US for 2026–2027, with the long-term goal of pursuing a Ph.D. in Financial Economics.
+Corporate finance and labor economics researcher focused on corporate governance, institutional ownership, and causal inference. Seeking a pre-doctoral RA position (2026–2027) toward a Ph.D. in Financial Economics.
 
 ---
 
 ## EDUCATION
 
-**Universidad de Navarra** — Pamplona, Spain  
+**University of Navarra** — Pamplona, Spain  
 *Master in Economics and Finance (MEF)* — Sep. 2025 – Present
 - Currently maintaining top-tier standing in Advanced Finance and Econometrics tracks.
 - Relevant Coursework: Real Analysis, Econometrics, Mathematical Economics, Statistics & Probability, Corporate Finance.
@@ -35,7 +35,7 @@ Master's candidate in Economics and Finance at Universidad de Navarra with a com
 
 ## RESEARCH & WORK EXPERIENCE
 
-**Universidad de Navarra** — Pamplona, Spain  
+**University of Navarra** — Pamplona, Spain  
 *Working Paper: "Institutional Common Ownership and Executive Mobility"* — Feb. 2026 – Jun. 2026
 - Investigated whether institutional common ownership acts as an informal non-compete mechanism in C-suite labor markets.
 - Constructed a 27.8-million-row firm-pair panel linking 13F institutional holdings (58.9M observations), S&P ExecuComp executive data (31,959 executive-years), and Orbis director transitions (24,716 moves).
@@ -53,7 +53,8 @@ Master's candidate in Economics and Finance at Universidad de Navarra with a com
 
 **Shandong Dongsheng Construction** — Shandong, China  
 *Accounting Intern* — Mar. 2024 – Jun. 2024
-- Assisted in daily accounting and financial statement preparation; supported management decision-making.
+- Applied Excel skills from undergraduate coursework to data analysis, accounting reconciliation, and Monte Carlo simulations.
+- Conducted regression analysis using basic Python and Stata.
 
 ---
 
@@ -65,7 +66,7 @@ Madrid Work & Organizations Workshop. *Paper presenter.* Keynote speakers: Erin 
 **IESE AI Conference** — IESE Business School, 2026  
 Delegate.
 
-**Roads to Development International Conference** — Universidad de Navarra, 2026  
+**Roads to Development International Conference** — University of Navarra, 2026  
 Participant.
 
 ---
@@ -81,10 +82,19 @@ Participant.
 
 ## SKILLS
 
-**Technical:** Stata, Python (pandas, statsmodels, NumPy, NLP), JavaScript, SQL, LaTeX, Git  
-**Languages:** English (C1), Spanish (A2), Chinese (Native)  
-**Soft Skills:** Leadership (Lead Developer), Teamwork (Research Collaboration), Cross-cultural Communication  
-**Hobbies:** Visual Design & Typography; Global Economic Geography & History; Quantitative Finance
+- **Exec-Mobility** (Python, pandas, statsmodels, NumPy, Stata, SQL, LaTeX, Git)
+- **CO-Workflow** (HTML, JavaScript, Git)
+- **Languages:** English (C1), Spanish (A2), Chinese (Native)
+- **Soft Skills:** Leadership (Lead Developer), Teamwork (Research Collaboration), Cross-cultural Communication
+- **Hobbies:** Visual Design & Typography; Global Economic Geography & History; Quantitative Finance
+
+---
+
+## REFERENCES
+
+**[Prof. José Azar](https://www.iese.edu/es/claustro-investigacion/claustro/jose-azar/)** (Thesis Supervisor)  
+IESE Business School & University of Navarra  
+Jazar@unav.es
 
 ---
 
